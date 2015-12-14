@@ -5,7 +5,7 @@ package org.vtsukur.algorithms.divide_and_conquer;
  */
 public final class KaratsubaMultiplication {
 
-    public long multiply(final long first, final long second) {
+    public long multiply(final long first, final long second, final int n) {
         return 7006652;
     }
 

@@ -13,7 +13,7 @@ public class KaratsubaMultiplicationTest {
         final long first = 1234;
         final long second = 5678;
 
-        final long product = new KaratsubaMultiplication().multiply(first, second);
+        final long product = new KaratsubaMultiplication().multiply(first, second, 4);
 
         Assert.assertEquals(first * second, product);
     }
