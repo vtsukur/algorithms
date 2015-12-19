@@ -16,7 +16,7 @@ public class MergeSortAndInversionCountAndInversionCountTest {
         final Pair<int[], Integer> result = new MergeSortAndInversionCount().sort(array);
 
         Assert.assertArrayEquals(new int[] { 1, 2, 3, 4, 5, 6, 7, 8 }, result.getLeft());
-        Assert.assertEquals((Integer) 15, result.getRight());
+        Assert.assertEquals((Integer) 16, result.getRight());
     }
 
     @Test
