@@ -10,12 +10,23 @@ import org.junit.Test;
 public class MergeSortAndInversionCountAndInversionCountTest {
 
     @Test
-    public void sort() {
+    public void eightNumbers() {
         final int[] array = { 5, 8, 1, 3, 7, 4, 6, 2 };
 
         final Pair<int[], Integer> result = new MergeSortAndInversionCount().sort(array);
 
         Assert.assertArrayEquals(new int[] { 1, 2, 3, 4, 5, 6, 7, 8 }, result.getLeft());
+        Assert.assertEquals((Integer) 15, result.getRight());
+    }
+
+    @Test
+    public void sixNumbers() {
+        final int[] array = { 1, 3, 5, 2, 4, 6 };
+
+        final Pair<int[], Integer> result = new MergeSortAndInversionCount().sort(array);
+
+        Assert.assertArrayEquals(new int[] { 1, 2, 3, 4, 5, 6 }, result.getLeft());
+        Assert.assertEquals((Integer) 3, result.getRight());
     }
 
 }

@@ -30,11 +30,13 @@ public final class MergeSortAndInversionCount {
         final int[] rightArray = right.getLeft();
 
         final int[] result = new int[distance];
+        int splitInversions = 0;
         int i = 0, j = 0, k = 0;
         while (i < leftArray.length && j < rightArray.length) {
             if (leftArray[i] <= rightArray[j]) {
                 result[k++] = leftArray[i++];
             } else {
+                splitInversions += leftArray.length - i;
                 result[k++] = rightArray[j++];
             }
         }
@@ -44,7 +46,8 @@ public final class MergeSortAndInversionCount {
         while (j < rightArray.length) {
             result[k++] = rightArray[j++];
         }
-        return new ImmutablePair<>(result, 0);
+
+        return new ImmutablePair<>(result, left.getRight() + right.getRight() + splitInversions);
     }
 
 }
