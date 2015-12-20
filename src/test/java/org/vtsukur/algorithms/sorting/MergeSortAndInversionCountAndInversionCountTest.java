@@ -4,6 +4,12 @@ import org.apache.commons.lang3.tuple.Pair;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Arrays;
+
 /**
  * @author volodymyr.tsukur
  */
@@ -27,6 +33,20 @@ public class MergeSortAndInversionCountAndInversionCountTest {
 
         Assert.assertArrayEquals(new int[] { 1, 2, 3, 4, 5, 6 }, result.getLeft());
         Assert.assertEquals((Integer) 3, result.getRight());
+    }
+
+    @Test
+    public void oneHundredThousandNumbers() throws URISyntaxException, IOException {
+        final int[] array = Files.lines(Paths.get(getClass().getResource("100k_numbers.txt").toURI()))
+                .filter(line -> line != null && !line.isEmpty())
+                .mapToInt(Integer::valueOf)
+                .toArray();
+
+        final Pair<int[], Integer> result = new MergeSortAndInversionCount().sort(array);
+
+        Arrays.sort(array);
+        Assert.assertArrayEquals(array, result.getLeft());
+//        Assert.assertEquals((Integer) 3, result.getRight());
     }
 
 }
