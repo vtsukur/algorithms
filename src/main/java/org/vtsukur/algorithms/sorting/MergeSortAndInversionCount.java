@@ -11,22 +11,22 @@ import org.apache.commons.lang3.tuple.Pair;
  */
 public final class MergeSortAndInversionCount {
 
-    public Pair<int[], Integer> sort(final int[] input) {
+    public Pair<int[], Long> sort(final int[] input) {
         return sort(input, 0, input.length - 1);
     }
 
-    private Pair<int[], Integer> sort(final int[] input, final int from, final int to) {
+    private Pair<int[], Long> sort(final int[] input, final int from, final int to) {
         final int distance = to - from + 1;
         if (1 == distance) {
-            return new ImmutablePair<>(new int[] { input[from] }, 0);
+            return new ImmutablePair<>(new int[] { input[from] }, 0L);
         }
         final int half = distance / 2;
 
         final int aftermath = from + half;
         final int rubicon = aftermath - 1;
-        final Pair<int[], Integer> left = sort(input, from, rubicon);
+        final Pair<int[], Long> left = sort(input, from, rubicon);
         final int[] leftArray = left.getLeft();
-        final Pair<int[], Integer> right = sort(input, aftermath, to);
+        final Pair<int[], Long> right = sort(input, aftermath, to);
         final int[] rightArray = right.getLeft();
 
         final int[] result = new int[distance];
