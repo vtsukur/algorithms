@@ -12,10 +12,10 @@ public class DijkstraShortestPathsTest {
 
     @Test
     public void fourNodes() {
-        final Node s = new Node();
-        final Node u = new Node();
-        final Node w = new Node();
-        final Node t = new Node();
+        final Node s = new Node("s");
+        final Node u = new Node("u");
+        final Node w = new Node("w");
+        final Node t = new Node("t");
 
         s.to(u, 1);
         s.to(w, 4);

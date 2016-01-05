@@ -17,6 +17,10 @@ public final class Edge {
         this.weight = weight;
     }
 
+    public Node from() {
+        return from;
+    }
+
     public Node to() {
         return to;
     }

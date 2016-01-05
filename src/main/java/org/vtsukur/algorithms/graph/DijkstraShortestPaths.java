@@ -1,7 +1,7 @@
 package org.vtsukur.algorithms.graph;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @author volodymyr.tsukur
@@ -18,22 +18,34 @@ public final class DijkstraShortestPaths {
         final Map<Node, Integer> shortestPaths = new HashMap<>();
         shortestPaths.put(from, 0);
 
+        final Set<Edge> candidateEdges = new HashSet<>();
+        addCandidateEdges(candidateEdges, from);
+
         while (shortestPaths.size() < graph.n()) {
             int minDistance = 0;
             Node next = null;
 
-            for (final Map.Entry<Node, Integer> entry : shortestPaths.entrySet()) {
-                final Node node = entry.getKey();
-                final int startDistance = entry.getValue();
-                for (final Edge edge : node.edges()) {
-                    final Node to = edge.to();
-                    if (!shortestPaths.containsKey(to)) {
-                        final int d = startDistance + edge.weight();
-                        if (next == null || d < minDistance) {
-                            minDistance = d;
-                            next = to;
-                        }
-                    }
+            for (final Edge edge : candidateEdges) {
+                final Node to = edge.to();
+                final int d = shortestPaths.get(edge.from()) + edge.weight();
+                if (next == null || d < minDistance) {
+                    minDistance = d;
+                    next = to;
+                }
+            }
+
+            final Collection<Edge> toRemove = new ArrayList<>();
+            for (final Edge edge : candidateEdges) {
+                if (edge.to().equals(next)) {
+                    toRemove.add(edge);
+                }
+            }
+            candidateEdges.removeAll(toRemove);
+            for (final Edge edge : next.edges()) {
+                if (shortestPaths.containsKey(edge.to())) {
+                    candidateEdges.remove(edge);
+                } else {
+                    candidateEdges.add(edge);
                 }
             }
 
@@ -41,6 +53,10 @@ public final class DijkstraShortestPaths {
         }
 
         return shortestPaths;
+    }
+
+    private void addCandidateEdges(final Set<Edge> edges, final Node node) {
+        edges.addAll(node.edges().stream().collect(Collectors.toList()));
     }
 
 }
