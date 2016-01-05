@@ -16,7 +16,7 @@ public final class Graph {
     }
 
     public Map<Node, Integer> calculateShortestPaths(final Node from) {
-        return new DijkstraShortestPaths(this, from).calculate(from);
+        return new DijkstraShortestPaths(this).calculate(from);
     }
 
     public int n() {

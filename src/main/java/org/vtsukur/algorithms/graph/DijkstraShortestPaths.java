@@ -10,11 +10,8 @@ public final class DijkstraShortestPaths {
 
     private final Graph graph;
 
-    private final Node from;
-
-    public DijkstraShortestPaths(final Graph graph, final Node from) {
+    public DijkstraShortestPaths(final Graph graph) {
         this.graph = graph;
-        this.from = from;
     }
 
     public Map<Node, Integer> calculate(final Node from) {
