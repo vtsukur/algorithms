@@ -17,9 +17,7 @@ public class QuickUnionUF implements UnionFind {
     public void union(final int p, final int q) {
         final int pRoot = root(p);
         final int qRoot = root(q);
-        if (pRoot != qRoot) {
-            store[pRoot] = qRoot;
-        }
+        store[pRoot] = qRoot;
     }
 
     @Override
