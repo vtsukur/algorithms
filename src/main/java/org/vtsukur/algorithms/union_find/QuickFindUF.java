@@ -33,4 +33,9 @@ public final class QuickFindUF implements UnionFind {
         return store[p] == store[q];
     }
 
+    @Override
+    public String toString() {
+        return "quick find";
+    }
+
 }

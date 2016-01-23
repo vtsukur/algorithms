@@ -41,10 +41,11 @@ public class QuickFindUFTest {
         this.uf = uf;
     }
 
-    @Parameterized.Parameters
+    @Parameterized.Parameters(name = "{0}")
     public static Collection<Object[]> algorithms() {
         return Arrays.asList(new Object[][] {
-                { new QuickFindUF(N) }
+                { new QuickFindUF(N) },
+                { new QuickUnionUF(N) }
         });
     }
 
