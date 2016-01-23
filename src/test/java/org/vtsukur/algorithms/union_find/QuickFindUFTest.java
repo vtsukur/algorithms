@@ -35,10 +35,10 @@ public class QuickFindUFTest {
             new AssertableTestEntry(0, 9, true),
     };
 
-    private final QuickFindUF uf;
+    private final UnionFind uf;
 
-    public QuickFindUFTest(final Object uf) {
-        this.uf = (QuickFindUF) uf;
+    public QuickFindUFTest(final UnionFind uf) {
+        this.uf = uf;
     }
 
     @Parameterized.Parameters

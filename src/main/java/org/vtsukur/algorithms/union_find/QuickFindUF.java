@@ -5,7 +5,7 @@ import java.util.stream.IntStream;
 /**
  * @author volodymyr.tsukur
  */
-public final class QuickFindUF {
+public final class QuickFindUF implements UnionFind {
 
     private final int[] store;
 
@@ -13,6 +13,7 @@ public final class QuickFindUF {
         store = IntStream.rangeClosed(0, n).toArray();
     }
 
+    @Override
     public void union(final int p, final int q) {
         if (connected(p, q)) {
             return;
@@ -27,6 +28,7 @@ public final class QuickFindUF {
         }
     }
 
+    @Override
     public boolean connected(int p, int q) {
         return store[p] == store[q];
     }
