@@ -15,19 +15,19 @@ public class QuickUnionUF implements UnionFind {
 
     @Override
     public void union(final int p, final int q) {
-        final int pParent = parent(p);
-        final int qParent = parent(q);
-        if (pParent != qParent) {
-            store[pParent] = qParent;
+        final int pRoot = root(p);
+        final int qRoot = root(q);
+        if (pRoot != qRoot) {
+            store[pRoot] = qRoot;
         }
     }
 
     @Override
     public boolean connected(final int p, final int q) {
-        return parent(p) == parent(q);
+        return root(p) == root(q);
     }
 
-    private int parent(final int of) {
+    private int root(final int of) {
         int i = of;
         while (store[i] != i) {
             i = store[i];
