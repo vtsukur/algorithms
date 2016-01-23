@@ -14,7 +14,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
  * @author volodymyr.tsukur
  */
 @RunWith(Parameterized.class)
-public class QuickFindUFTest {
+public class UnionFindTest {
 
     private static final int N = 10;
 
@@ -37,7 +37,7 @@ public class QuickFindUFTest {
 
     private final UnionFind uf;
 
-    public QuickFindUFTest(final UnionFind uf) {
+    public UnionFindTest(final UnionFind uf) {
         this.uf = uf;
     }
 

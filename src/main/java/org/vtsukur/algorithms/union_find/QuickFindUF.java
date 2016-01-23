@@ -1,16 +1,12 @@
 package org.vtsukur.algorithms.union_find;
 
-import java.util.stream.IntStream;
-
 /**
  * @author volodymyr.tsukur
  */
-public final class QuickFindUF implements UnionFind {
-
-    private final int[] store;
+public final class QuickFindUF extends AbstractUnionFind {
 
     QuickFindUF(final int n) {
-        store = IntStream.rangeClosed(0, n).toArray();
+        super(n);
     }
 
     @Override
@@ -34,7 +30,7 @@ public final class QuickFindUF implements UnionFind {
     }
 
     @Override
-    public String toString() {
+    protected String getName() {
         return "quick find";
     }
 
