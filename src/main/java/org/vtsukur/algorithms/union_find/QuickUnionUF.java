@@ -3,7 +3,7 @@ package org.vtsukur.algorithms.union_find;
 /**
  * @author volodymyr.tsukur
  */
-public class QuickUnionUF extends AbstractUnionFind {
+public final class QuickUnionUF extends AbstractUnionFind {
 
     QuickUnionUF(final int n) {
         super(n);
