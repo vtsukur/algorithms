@@ -5,11 +5,11 @@ import java.util.Arrays;
 /**
  * @author volodymyr.tsukur
  */
-public final class WeightedQuickUnionUF extends AbstractUnionFind {
+public final class WeightedQuickUnionPathCompressionUF extends AbstractUnionFind {
 
     private final int[] depths;
 
-    public WeightedQuickUnionUF(final int n) {
+    public WeightedQuickUnionPathCompressionUF(final int n) {
         super(n);
         depths = new int[n];
         Arrays.fill(depths, 1);
@@ -38,14 +38,16 @@ public final class WeightedQuickUnionUF extends AbstractUnionFind {
     private int root(final int of) {
         int i = of;
         while (store[i] != i) {
-            i = store[i];
+            int parent = store[i];
+            store[i] = store[parent];
+            i = parent;
         }
         return i;
     }
 
     @Override
     protected String getName() {
-        return "weighted quick union";
+        return "weighted quick union with path compression";
     }
 
 }
