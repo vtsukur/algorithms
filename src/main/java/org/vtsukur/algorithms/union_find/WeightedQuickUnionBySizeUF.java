@@ -5,14 +5,14 @@ import java.util.Arrays;
 /**
  * @author volodymyr.tsukur
  */
-public final class WeightedQuickUnionPathCompressionUF extends AbstractUnionFind {
+public final class WeightedQuickUnionBySizeUF extends AbstractUnionFind {
 
-    private final int[] depths;
+    private final int[] size;
 
-    public WeightedQuickUnionPathCompressionUF(final int n) {
+    public WeightedQuickUnionBySizeUF(final int n) {
         super(n);
-        depths = new int[n];
-        Arrays.fill(depths, 1);
+        size = new int[n];
+        Arrays.fill(size, 1);
     }
 
     @Override
@@ -20,13 +20,16 @@ public final class WeightedQuickUnionPathCompressionUF extends AbstractUnionFind
         final int pRoot = root(p);
         final int qRoot = root(q);
 
-        if (depths[pRoot] == depths[qRoot]) {
-            store[pRoot] = qRoot;
-            depths[qRoot] += 1;
-        } else if (depths[pRoot] < depths[qRoot]) {
-            store[pRoot] = qRoot;
-        } else {
+        if (pRoot == qRoot) {
+            return;
+        }
+
+        if (size[pRoot] >= size[qRoot]) {
             store[qRoot] = pRoot;
+            size[pRoot] += size[qRoot];
+        } else {
+            store[pRoot] = qRoot;
+            size[qRoot] += size[pRoot];
         }
     }
 
@@ -38,16 +41,14 @@ public final class WeightedQuickUnionPathCompressionUF extends AbstractUnionFind
     private int root(final int of) {
         int i = of;
         while (store[i] != i) {
-            int parent = store[i];
-            store[i] = store[parent];
-            i = parent;
+            i = store[i];
         }
         return i;
     }
 
     @Override
     protected String getName() {
-        return "weighted quick union with path compression";
+        return "weighted quick union (by size)";
     }
 
 }

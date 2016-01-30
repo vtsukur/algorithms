@@ -46,6 +46,7 @@ public class UnionFindTest {
         return Arrays.asList(new Object[][] {
                 { new QuickFindUF(N) },
                 { new QuickUnionUF(N) },
+                { new WeightedQuickUnionBySizeUF(N) },
                 { new WeightedQuickUnionByHeightPathCompressionUF(N) }
         });
     }
