@@ -10,7 +10,7 @@ abstract class AbstractUnionFind implements UnionFind {
     protected final int[] store;
 
     AbstractUnionFind(final int n) {
-        store = IntStream.rangeClosed(0, n).toArray();
+        store = IntStream.rangeClosed(0, n - 1).toArray();
     }
 
     @Override
