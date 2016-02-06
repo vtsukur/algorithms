@@ -31,7 +31,7 @@ public class BinarySearchTest {
 
     @Test
     public void find_in_single_element_array() {
-        assertThat(BinarySearch.indexOf(new int[] { 10 }, 10), is(-1));
+        assertThat(BinarySearch.indexOf(new int[] { 10 }, 10), is(0));
     }
 
 }
