@@ -22,4 +22,9 @@ public class ThreeSumTest {
         assertThat(ThreeSumNSquaredLogN.count(SOURCE), is(4));
     }
 
+    @Test
+    public void n_squared_algorithm_count() {
+        assertThat(ThreeSumNSquared.count(SOURCE), is(4));
+    }
+
 }
