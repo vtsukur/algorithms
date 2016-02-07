@@ -10,14 +10,14 @@ import java.util.Arrays;
 public final class ThreeSumNSquaredLogN {
 
     public static int count(final int[] source) {
-        final int[] cpy = Arrays.copyOf(source, source.length);
-        Arrays.sort(cpy);
+        final int[] sorted = Arrays.copyOf(source, source.length);
+        Arrays.sort(sorted);
 
         int times = 0;
 
-        for (int i = 0; i < cpy.length; i++)
-            for (int j = i + 1; j < cpy.length; j++) {
-                final int index = BinarySearch.indexOf(cpy, -(cpy[i] + cpy[j]));
+        for (int i = 0; i < sorted.length; i++)
+            for (int j = i + 1; j < sorted.length; j++) {
+                final int index = BinarySearch.indexOf(sorted, -(sorted[i] + sorted[j]));
                 if (index != -1 && index > j) {
                     times++;
                 }
