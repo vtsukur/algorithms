@@ -7,7 +7,7 @@ import java.util.Map;
 /**
  * @author volodymyr.tsukur
  */
-public final class ThreeSumNSquared {
+public final class ThreeSumNSquaredHashTable {
 
     public static int count(final int[] source) {
         final int[] sorted = Arrays.copyOf(source, source.length);

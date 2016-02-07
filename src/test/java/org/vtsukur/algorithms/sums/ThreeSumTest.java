@@ -23,8 +23,8 @@ public class ThreeSumTest {
     }
 
     @Test
-    public void n_squared_algorithm_count() {
-        assertThat(ThreeSumNSquared.count(SOURCE), is(4));
+    public void n_squared_hash_table_algorithm_count() {
+        assertThat(ThreeSumNSquaredHashTable.count(SOURCE), is(4));
     }
 
 }
