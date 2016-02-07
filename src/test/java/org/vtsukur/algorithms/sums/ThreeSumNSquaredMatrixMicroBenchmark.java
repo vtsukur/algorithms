@@ -29,7 +29,7 @@ public class ThreeSumNSquaredMatrixMicroBenchmark {
     @Benchmark
     @BenchmarkMode({Mode.AverageTime})
     public void test() {
-        System.out.println(ThreeSumNSquaredMatrix.countSorted(SORTED));
+        ThreeSumNSquaredMatrix.countSorted(SORTED);
     }
 
     public static void main(final String[] args) throws RunnerException {
