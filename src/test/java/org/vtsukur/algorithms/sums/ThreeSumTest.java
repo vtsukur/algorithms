@@ -27,4 +27,9 @@ public class ThreeSumTest {
         assertThat(ThreeSumNSquaredHashTable.count(SOURCE), is(4));
     }
 
+    @Test
+    public void n_squared_matrix_algorithm_count() {
+        assertThat(ThreeSumNSquaredMatrix.count(SOURCE), is(4));
+    }
+
 }
