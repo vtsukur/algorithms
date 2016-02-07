@@ -12,7 +12,10 @@ public final class ThreeSumNSquaredLogN {
     public static int count(final int[] source) {
         final int[] sorted = Arrays.copyOf(source, source.length);
         Arrays.sort(sorted);
+        return countSorted(sorted);
+    }
 
+    public static int countSorted(int[] sorted) {
         int times = 0;
 
         for (int i = 0; i < sorted.length; i++)
