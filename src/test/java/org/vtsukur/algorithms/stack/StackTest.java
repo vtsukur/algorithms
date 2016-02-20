@@ -24,9 +24,9 @@ public class StackTest {
     @Parameterized.Parameters(name = "{0}")
     public static Collection<Object[]> implementations() {
         return Arrays.asList(new Object[][]{
-                {new CustomLinkedListBasedStack()},
-                {new LinkedListBasedStack()},
-                {new ArrayBasedStack()}
+                {new CustomLinkedListBasedStack<String>()},
+                {new LinkedListBasedStack<String>()},
+                {new ArrayBasedStack<String>()}
         });
     }
 
