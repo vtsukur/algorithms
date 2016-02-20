@@ -36,11 +36,6 @@ public final class LinkedListBasedQueue<T> implements Queue<T> {
     }
 
     @Override
-    public String toString() {
-        return "based on linked list";
-    }
-
-    @Override
     public Iterator<T> iterator() {
         return list.iterator();
     }

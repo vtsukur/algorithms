@@ -8,9 +8,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 /**
  * @author volodymyr.tsukur
@@ -18,23 +16,25 @@ import static org.junit.Assert.assertTrue;
 @RunWith(Parameterized.class)
 public class QueueTest {
 
-    private final Queue<String> queue;
+    private final Builder builder;
 
-    public QueueTest(final Queue<String> queue) {
-        this.queue = queue;
+    public QueueTest(final Provider provider) {
+        this.builder = provider.builder;
     }
 
     @Parameterized.Parameters(name = "{0}")
     public static Collection<Object[]> implementations() {
         return Arrays.asList(new Object[][]{
-                {new CustomLinkedListBasedQueue<String>()},
-                {new LinkedListBasedQueue<String>()},
-                {new ArrayBasedQueue<String>()}
+                {new Provider(CustomLinkedListBasedQueue::new, "based on custom implementation of linked list")},
+                {new Provider(LinkedListBasedQueue::new, "based on linked list")},
+                {new Provider(ArrayBasedQueue::new, "based on resizable array")}
         });
     }
 
     @Test
     public void test() {
+        final Queue<String> queue = builder.build();
+
         queue.enqueue("5");
         assertSizeAndEmptyFlag(queue, 1);
         assertEquals(queue.dequeue(), "5");
@@ -72,6 +72,8 @@ public class QueueTest {
 
     @Test
     public void iterator() {
+        final Queue<String> queue = builder.build();
+
         queue.enqueue("1");
         queue.enqueue("2");
         queue.enqueue("3");
@@ -89,6 +91,36 @@ public class QueueTest {
     private static void assertSizeAndEmptyFlag(final Queue queue, final int expectedSize) {
         assertEquals(queue.size(), expectedSize);
         assertEquals(queue.isEmpty(), expectedSize == 0);
+    }
+
+
+    /**
+     * @author volodymyr.tsukur
+     */
+    private static final class Provider {
+
+        private final Builder builder;
+
+        private final String name;
+
+        public Provider(final Builder builder, final String name) {
+            this.builder = builder;
+            this.name = name;
+        }
+
+        @Override
+        public String toString() {
+            return name;
+        }
+    }
+
+    /**
+     * @author volodymyr.tsukur
+     */
+    private interface Builder {
+
+        Queue<String> build();
+
     }
 
 }

@@ -35,7 +35,7 @@ public class StackTest {
 
     @Test
     public void test() {
-        Stack<String> stack = builder.build();
+        final Stack<String> stack = builder.build();
 
         stack.push("5");
         assertSizeAndEmptyFlag(stack, 1);
@@ -74,7 +74,7 @@ public class StackTest {
 
     @Test
     public void iterator() {
-        Stack<String> stack = builder.build();
+        final Stack<String> stack = builder.build();
 
         stack.push("1");
         stack.push("2");

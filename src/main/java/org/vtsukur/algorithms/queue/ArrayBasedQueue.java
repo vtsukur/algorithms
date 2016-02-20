@@ -82,11 +82,6 @@ public final class ArrayBasedQueue<T> implements Queue<T> {
     }
 
     @Override
-    public String toString() {
-        return "based on resizable array";
-    }
-
-    @Override
     public Iterator<T> iterator() {
         return new QueueIterator();
     }

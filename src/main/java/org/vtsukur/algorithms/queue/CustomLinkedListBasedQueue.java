@@ -57,11 +57,6 @@ public final class CustomLinkedListBasedQueue<T> implements Queue<T> {
     }
 
     @Override
-    public String toString() {
-        return "based on custom implementation of linked list";
-    }
-
-    @Override
     public Iterator<T> iterator() {
         return new QueueIterator<>(head);
     }
