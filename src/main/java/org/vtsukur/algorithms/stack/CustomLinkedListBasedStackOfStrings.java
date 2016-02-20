@@ -1,5 +1,7 @@
 package org.vtsukur.algorithms.stack;
 
+import java.util.NoSuchElementException;
+
 /**
  * @author volodymyr.tsukur
  */
@@ -19,7 +21,7 @@ public final class CustomLinkedListBasedStackOfStrings implements StackOfStrings
     @Override
     public String pop() {
         if (isEmpty()) {
-            throw new IllegalStateException("Can't pop from empty stack");
+            throw new NoSuchElementException("Can't pop from empty stack");
         }
 
         final Node oldHead = head;
