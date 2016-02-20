@@ -11,20 +11,21 @@ public final class CustomLinkedListBasedStackOfStrings implements StackOfStrings
 
     @Override
     public void push(final String item) {
-        head = new Node(item, head);
+        final Node oldHead = head;
+        head = new Node(item, oldHead);
         size++;
     }
 
     @Override
     public String pop() {
         if (isEmpty()) {
-            throw new IllegalStateException("Can't pop when stack is empty");
+            throw new IllegalStateException("Can't pop from empty stack");
         }
 
         final Node oldHead = head;
         String value = oldHead.value;
-        head = oldHead.previous;
-        oldHead.previous = null; // GC
+        head = oldHead.next;
+        oldHead.next = null; // GC
         size--;
 
         return value;
@@ -45,15 +46,18 @@ public final class CustomLinkedListBasedStackOfStrings implements StackOfStrings
         return "based on custom implementation of linked list";
     }
 
+    /**
+     * @author volodymyr.tsukur
+     */
     private static final class Node {
 
         String value;
 
-        Node previous;
+        Node next;
 
-        public Node(String value, Node previous) {
+        public Node(final String value, final Node next) {
             this.value = value;
-            this.previous = previous;
+            this.next = next;
         }
 
     }
