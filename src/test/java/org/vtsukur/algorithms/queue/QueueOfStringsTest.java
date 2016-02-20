@@ -26,6 +26,7 @@ public class QueueOfStringsTest {
         return Arrays.asList(new Object[][]{
                 {new CustomLinkedListBasedQueueOfStrings()},
                 {new LinkedListBasedQueueOfStrings()},
+                {new ArrayBasedQueueOfStrings()}
         });
     }
 
