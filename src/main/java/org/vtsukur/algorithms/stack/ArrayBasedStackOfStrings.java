@@ -9,13 +9,13 @@ public final class ArrayBasedStackOfStrings implements StackOfStrings {
 
     private int size;
 
-    private String[] array = new String[size];
+    private String[] array = new String[1];
 
     @Override
     public void push(final String item) {
         if (size == array.length) { // resize
             final String[] oldArray = array;
-            array = new String[size + 10];
+            array = new String[size * 2];
             System.arraycopy(oldArray, 0, array, 0, size);
         }
 
