@@ -50,16 +50,19 @@ public class QueueOfStringsTest {
         assertSizeAndEmptyFlag(queue, 0);
 
         queue.enqueue("2");
-        assertSizeAndEmptyFlag(queue, 1);
-        assertEquals(queue.dequeue(), "2");
-        assertSizeAndEmptyFlag(queue, 0);
-
         queue.enqueue("6");
         queue.enqueue("7");
         queue.enqueue("8");
         queue.enqueue("9");
         queue.enqueue("10");
-        assertSizeAndEmptyFlag(queue, 5);
+        assertSizeAndEmptyFlag(queue, 6);
+        assertEquals(queue.dequeue(), "2");
+        assertEquals(queue.dequeue(), "6");
+        assertEquals(queue.dequeue(), "7");
+        assertEquals(queue.dequeue(), "8");
+        assertEquals(queue.dequeue(), "9");
+        assertEquals(queue.dequeue(), "10");
+        assertSizeAndEmptyFlag(queue, 0);
     }
 
     private static void assertSizeAndEmptyFlag(final QueueOfStrings queue, final int expectedSize) {

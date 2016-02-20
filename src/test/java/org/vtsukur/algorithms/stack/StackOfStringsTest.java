@@ -52,16 +52,19 @@ public class StackOfStringsTest {
         assertSizeAndEmptyFlag(stack, 0);
 
         stack.push("2");
-        assertSizeAndEmptyFlag(stack, 1);
-        assertEquals(stack.pop(), "2");
-        assertSizeAndEmptyFlag(stack, 0);
-
         stack.push("6");
         stack.push("7");
         stack.push("8");
         stack.push("9");
         stack.push("10");
-        assertSizeAndEmptyFlag(stack, 5);
+        assertSizeAndEmptyFlag(stack, 6);
+        assertEquals(stack.pop(), "10");
+        assertEquals(stack.pop(), "9");
+        assertEquals(stack.pop(), "8");
+        assertEquals(stack.pop(), "7");
+        assertEquals(stack.pop(), "6");
+        assertEquals(stack.pop(), "2");
+        assertSizeAndEmptyFlag(stack, 0);
     }
 
     private static void assertSizeAndEmptyFlag(final StackOfStrings stack, final int expectedSize) {
