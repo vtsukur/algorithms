@@ -1,5 +1,6 @@
 package org.vtsukur.algorithms.stack;
 
+import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
@@ -59,6 +60,32 @@ public final class ArrayBasedStack<T> implements Stack<T> {
     @Override
     public String toString() {
         return "based on resizable array";
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new StackIterator();
+    }
+
+    /**
+     * @author volodymyr.tsukur
+     */
+    private final class StackIterator implements Iterator<T> {
+
+        private int i = size - 1;
+
+        @Override
+        public boolean hasNext() {
+            return i >= 0;
+        }
+
+        @Override
+        public T next() {
+            final T el = array[i];
+            i--;
+            return el;
+        }
+
     }
 
 }

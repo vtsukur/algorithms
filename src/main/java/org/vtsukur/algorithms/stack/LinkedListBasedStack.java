@@ -1,5 +1,6 @@
 package org.vtsukur.algorithms.stack;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.NoSuchElementException;
 
@@ -37,6 +38,11 @@ public final class LinkedListBasedStack<T> implements Stack<T> {
     @Override
     public String toString() {
         return "based on linked list";
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return list.iterator();
     }
 
 }

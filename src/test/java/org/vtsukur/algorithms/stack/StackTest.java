@@ -6,8 +6,11 @@ import org.junit.runners.Parameterized;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Iterator;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 /**
  * @author volodymyr.tsukur
@@ -65,6 +68,22 @@ public class StackTest {
         assertEquals(stack.pop(), "6");
         assertEquals(stack.pop(), "2");
         assertSizeAndEmptyFlag(stack, 0);
+    }
+
+    @Test
+    public void iterator() {
+        stack.push("1");
+        stack.push("2");
+        stack.push("3");
+
+        Iterator<String> i = stack.iterator();
+        assertTrue(i.hasNext());
+        assertEquals(i.next(), "3");
+        assertTrue(i.hasNext());
+        assertEquals(i.next(), "2");
+        assertTrue(i.hasNext());
+        assertEquals(i.next(), "1");
+        assertFalse(i.hasNext());
     }
 
     private static void assertSizeAndEmptyFlag(final Stack stack, final int expectedSize) {
