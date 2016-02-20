@@ -46,11 +46,6 @@ public final class CustomLinkedListBasedStack<T> implements Stack<T> {
     }
 
     @Override
-    public String toString() {
-        return "based on custom implementation of linked list";
-    }
-
-    @Override
     public Iterator<T> iterator() {
         return new StackIterator<>(head);
     }

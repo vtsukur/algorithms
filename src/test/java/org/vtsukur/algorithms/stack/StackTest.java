@@ -18,23 +18,25 @@ import static org.junit.Assert.assertTrue;
 @RunWith(Parameterized.class)
 public class StackTest {
 
-    private final Stack<String> stack;
+    private final Builder builder;
 
-    public StackTest(final Stack<String> stack) {
-        this.stack = stack;
+    public StackTest(final Provider provider) {
+        this.builder = provider.builder;
     }
 
     @Parameterized.Parameters(name = "{0}")
     public static Collection<Object[]> implementations() {
         return Arrays.asList(new Object[][]{
-                {new CustomLinkedListBasedStack<String>()},
-                {new LinkedListBasedStack<String>()},
-                {new ArrayBasedStack<String>()}
+                {new Provider(CustomLinkedListBasedStack::new, "based on custom implementation of linked list")},
+                {new Provider(LinkedListBasedStack::new, "based on linked list")},
+                {new Provider(ArrayBasedStack::new, "based on resizable array")}
         });
     }
 
     @Test
     public void test() {
+        Stack<String> stack = builder.build();
+
         stack.push("5");
         assertSizeAndEmptyFlag(stack, 1);
         assertEquals(stack.pop(), "5");
@@ -72,6 +74,8 @@ public class StackTest {
 
     @Test
     public void iterator() {
+        Stack<String> stack = builder.build();
+
         stack.push("1");
         stack.push("2");
         stack.push("3");
@@ -89,6 +93,35 @@ public class StackTest {
     private static void assertSizeAndEmptyFlag(final Stack stack, final int expectedSize) {
         assertEquals(stack.size(), expectedSize);
         assertEquals(stack.isEmpty(), expectedSize == 0);
+    }
+
+    /**
+     * @author volodymyr.tsukur
+     */
+    private static final class Provider {
+
+        private final Builder builder;
+
+        private final String name;
+
+        public Provider(final Builder builder, final String name) {
+            this.builder = builder;
+            this.name = name;
+        }
+
+        @Override
+        public String toString() {
+            return name;
+        }
+    }
+
+    /**
+     * @author volodymyr.tsukur
+     */
+    private interface Builder {
+
+        Stack<String> build();
+
     }
 
 }

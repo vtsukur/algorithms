@@ -58,11 +58,6 @@ public final class ArrayBasedStack<T> implements Stack<T> {
     }
 
     @Override
-    public String toString() {
-        return "based on resizable array";
-    }
-
-    @Override
     public Iterator<T> iterator() {
         return new StackIterator();
     }
