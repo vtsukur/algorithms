@@ -25,6 +25,7 @@ public final class CustomLinkedListBasedStackOfStrings implements StackOfStrings
         final Node oldHead = head;
         String value = oldHead.value;
         head = oldHead.next;
+        oldHead.value = null; // GC
         oldHead.next = null; // GC
         size--;
 
