@@ -25,7 +25,8 @@ public class StackOfStringsTest {
     public static Collection<Object[]> implementations() {
         return Arrays.asList(new Object[][]{
                 {new CustomLinkedListBasedStackOfStrings()},
-                {new LinkedListBasedStackOfStrings()}
+                {new LinkedListBasedStackOfStrings()},
+                {new ArrayBasedStackOfStrings()}
         });
     }
 
