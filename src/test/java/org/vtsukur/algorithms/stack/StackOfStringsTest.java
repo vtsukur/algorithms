@@ -11,7 +11,7 @@ public class StackOfStringsTest {
 
     @Test
     public void pushPop() {
-        StackOfStrings stack = new StackOfStrings();
+        StackOfStrings stack = new CustomLinkedListBasedStackOfStrings();
 
         stack.push("5");
         assertSizeAndEmptyFlag(stack, 1);
