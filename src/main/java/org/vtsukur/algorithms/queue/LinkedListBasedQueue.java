@@ -1,4 +1,4 @@
-package org.vtsukur.algorithms.stack;
+package org.vtsukur.algorithms.queue;
 
 import java.util.LinkedList;
 import java.util.NoSuchElementException;
@@ -6,19 +6,19 @@ import java.util.NoSuchElementException;
 /**
  * @author volodymyr.tsukur
  */
-public final class LinkedListBasedStackOfStrings implements StackOfStrings {
+public final class LinkedListBasedQueue implements Queue {
 
     private final LinkedList<String> list = new LinkedList<>();
 
     @Override
-    public void push(final String item) {
-        list.addFirst(item);
+    public void enqueue(final String item) {
+        list.addLast(item);
     }
 
     @Override
-    public String pop() {
+    public String dequeue() {
         if (isEmpty()) {
-            throw new NoSuchElementException("Can't pop from empty stack");
+            throw new NoSuchElementException("Can't dequeue from empty queue");
         }
 
         return list.removeFirst();

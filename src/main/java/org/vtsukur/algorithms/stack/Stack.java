@@ -3,7 +3,7 @@ package org.vtsukur.algorithms.stack;
 /**
  * @author volodymyr.tsukur
  */
-public interface StackOfStrings {
+public interface Stack {
 
     void push(String item);
 

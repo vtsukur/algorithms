@@ -3,7 +3,7 @@ package org.vtsukur.algorithms.queue;
 /**
  * @author volodymyr.tsukur
  */
-public interface QueueOfStrings {
+public interface Queue {
 
     void enqueue(String item);
 

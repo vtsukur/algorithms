@@ -5,7 +5,7 @@ import java.util.NoSuchElementException;
 /**
  * @author volodymyr.tsukur
  */
-public final class CustomLinkedListBasedQueueOfStrings implements QueueOfStrings {
+public final class CustomLinkedListBasedQueue implements Queue {
 
     private Node head;
 

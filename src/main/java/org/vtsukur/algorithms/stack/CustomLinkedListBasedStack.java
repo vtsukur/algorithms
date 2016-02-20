@@ -5,7 +5,7 @@ import java.util.NoSuchElementException;
 /**
  * @author volodymyr.tsukur
  */
-public final class CustomLinkedListBasedStackOfStrings implements StackOfStrings {
+public final class CustomLinkedListBasedStack implements Stack {
 
     private Node head;
 

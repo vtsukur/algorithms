@@ -5,7 +5,7 @@ import java.util.NoSuchElementException;
 /**
  * @author volodymyr.tsukur
  */
-public final class ArrayBasedQueueOfStrings implements QueueOfStrings {
+public final class ArrayBasedQueue implements Queue {
 
     private int head;
 

@@ -5,7 +5,7 @@ import java.util.NoSuchElementException;
 /**
  * @author volodymyr.tsukur
  */
-public final class ArrayBasedStackOfStrings implements StackOfStrings {
+public final class ArrayBasedStack implements Stack {
 
     private int size;
 

@@ -13,20 +13,20 @@ import static org.junit.Assert.assertEquals;
  * @author volodymyr.tsukur
  */
 @RunWith(Parameterized.class)
-public class QueueOfStringsTest {
+public class QueueTest {
 
-    private final QueueOfStrings queue;
+    private final Queue queue;
 
-    public QueueOfStringsTest(final QueueOfStrings queue) {
+    public QueueTest(final Queue queue) {
         this.queue = queue;
     }
 
     @Parameterized.Parameters(name = "{0}")
     public static Collection<Object[]> implementations() {
         return Arrays.asList(new Object[][]{
-                {new CustomLinkedListBasedQueueOfStrings()},
-                {new LinkedListBasedQueueOfStrings()},
-                {new ArrayBasedQueueOfStrings()}
+                {new CustomLinkedListBasedQueue()},
+                {new LinkedListBasedQueue()},
+                {new ArrayBasedQueue()}
         });
     }
 
@@ -67,7 +67,7 @@ public class QueueOfStringsTest {
         assertSizeAndEmptyFlag(queue, 0);
     }
 
-    private static void assertSizeAndEmptyFlag(final QueueOfStrings queue, final int expectedSize) {
+    private static void assertSizeAndEmptyFlag(final Queue queue, final int expectedSize) {
         assertEquals(queue.size(), expectedSize);
         assertEquals(queue.isEmpty(), expectedSize == 0);
     }

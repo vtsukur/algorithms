@@ -13,20 +13,20 @@ import static org.junit.Assert.assertEquals;
  * @author volodymyr.tsukur
  */
 @RunWith(Parameterized.class)
-public class StackOfStringsTest {
+public class StackTest {
 
-    private final StackOfStrings stack;
+    private final Stack stack;
 
-    public StackOfStringsTest(final StackOfStrings stack) {
+    public StackTest(final Stack stack) {
         this.stack = stack;
     }
 
     @Parameterized.Parameters(name = "{0}")
     public static Collection<Object[]> implementations() {
         return Arrays.asList(new Object[][]{
-                {new CustomLinkedListBasedStackOfStrings()},
-                {new LinkedListBasedStackOfStrings()},
-                {new ArrayBasedStackOfStrings()}
+                {new CustomLinkedListBasedStack()},
+                {new LinkedListBasedStack()},
+                {new ArrayBasedStack()}
         });
     }
 
@@ -67,7 +67,7 @@ public class StackOfStringsTest {
         assertSizeAndEmptyFlag(stack, 0);
     }
 
-    private static void assertSizeAndEmptyFlag(final StackOfStrings stack, final int expectedSize) {
+    private static void assertSizeAndEmptyFlag(final Stack stack, final int expectedSize) {
         assertEquals(stack.size(), expectedSize);
         assertEquals(stack.isEmpty(), expectedSize == 0);
     }
