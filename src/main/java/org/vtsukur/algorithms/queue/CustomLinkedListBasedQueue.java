@@ -5,18 +5,18 @@ import java.util.NoSuchElementException;
 /**
  * @author volodymyr.tsukur
  */
-public final class CustomLinkedListBasedQueue implements Queue {
+public final class CustomLinkedListBasedQueue<T> implements Queue<T> {
 
-    private Node head;
+    private Node<T> head;
 
-    private Node tail;
+    private Node<T> tail;
 
     private int size = 0;
 
     @Override
-    public void enqueue(final String item) {
-        final Node oldTail = tail;
-        tail = new Node(item, null);
+    public void enqueue(final T item) {
+        final Node<T> oldTail = tail;
+        tail = new Node<>(item, null);
         if (oldTail != null) {
             oldTail.next = tail;
         } else {
@@ -26,13 +26,13 @@ public final class CustomLinkedListBasedQueue implements Queue {
     }
 
     @Override
-    public String dequeue() {
+    public T dequeue() {
         if (isEmpty()) {
             throw new NoSuchElementException("Can't dequeue from empty queue");
         }
 
-        final Node oldHead = head;
-        String value = oldHead.value;
+        final Node<T> oldHead = head;
+        T value = oldHead.value;
         head = oldHead.next;
         oldHead.value = null; // GC
         oldHead.next = null; // GC
@@ -63,15 +63,15 @@ public final class CustomLinkedListBasedQueue implements Queue {
     /**
      * @author volodymyr.tsukur
      */
-    private static final class Node { // 32 bytes overhead for each entry
+    private static final class Node<T> { // 32 bytes overhead for each entry
 
         // 16 bytes object overhead
 
-        String value; // 8 bytes pointer overhead
+        T value; // 8 bytes pointer overhead
 
-        Node next; // 8 bytes pointer overhead
+        Node<T> next; // 8 bytes pointer overhead
 
-        public Node(final String value, final Node next) {
+        public Node(final T value, final Node<T> next) {
             this.value = value;
             this.next = next;
         }

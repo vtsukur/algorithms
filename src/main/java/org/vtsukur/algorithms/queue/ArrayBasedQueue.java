@@ -5,7 +5,7 @@ import java.util.NoSuchElementException;
 /**
  * @author volodymyr.tsukur
  */
-public final class ArrayBasedQueue implements Queue {
+public final class ArrayBasedQueue<T> implements Queue<T> {
 
     private int head;
 
@@ -13,10 +13,11 @@ public final class ArrayBasedQueue implements Queue {
 
     private int size;
 
-    private String[] array = new String[1];
+    @SuppressWarnings("unchecked")
+    private T[] array = (T[]) new Object[1];
 
     @Override
-    public void enqueue(final String item) {
+    public void enqueue(final T item) {
         if (tail == array.length) {
             if (head == 0) {
                 resize(tail * 2);
@@ -31,7 +32,7 @@ public final class ArrayBasedQueue implements Queue {
     }
 
     @Override
-    public String dequeue() {
+    public T dequeue() {
         if (isEmpty()) {
             throw new NoSuchElementException("Can't dequeue from empty queue");
         }
@@ -40,7 +41,7 @@ public final class ArrayBasedQueue implements Queue {
             resize(array.length / 2);
         }
 
-        final String item = array[head];
+        final T item = array[head];
         array[head] = null;
         head++;
         size--;
@@ -48,9 +49,10 @@ public final class ArrayBasedQueue implements Queue {
         return item;
     }
 
+    @SuppressWarnings("unchecked")
     private void resize(final int capacity) {
-        final String[] oldArray = array;
-        array = new String[capacity];
+        final T[] oldArray = array;
+        array = (T[]) new Object[capacity];
         System.arraycopy(oldArray, head, array, 0, size);
         head = 0;
     }

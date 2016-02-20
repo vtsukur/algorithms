@@ -6,17 +6,17 @@ import java.util.NoSuchElementException;
 /**
  * @author volodymyr.tsukur
  */
-public final class LinkedListBasedQueue implements Queue {
+public final class LinkedListBasedQueue<T> implements Queue<T> {
 
-    private final LinkedList<String> list = new LinkedList<>();
+    private final LinkedList<T> list = new LinkedList<>();
 
     @Override
-    public void enqueue(final String item) {
+    public void enqueue(final T item) {
         list.addLast(item);
     }
 
     @Override
-    public String dequeue() {
+    public T dequeue() {
         if (isEmpty()) {
             throw new NoSuchElementException("Can't dequeue from empty queue");
         }

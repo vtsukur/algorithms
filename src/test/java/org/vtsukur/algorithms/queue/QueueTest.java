@@ -15,18 +15,18 @@ import static org.junit.Assert.assertEquals;
 @RunWith(Parameterized.class)
 public class QueueTest {
 
-    private final Queue queue;
+    private final Queue<String> queue;
 
-    public QueueTest(final Queue queue) {
+    public QueueTest(final Queue<String> queue) {
         this.queue = queue;
     }
 
     @Parameterized.Parameters(name = "{0}")
     public static Collection<Object[]> implementations() {
         return Arrays.asList(new Object[][]{
-                {new CustomLinkedListBasedQueue()},
-                {new LinkedListBasedQueue()},
-                {new ArrayBasedQueue()}
+                {new CustomLinkedListBasedQueue<String>()},
+                {new LinkedListBasedQueue<String>()},
+                {new ArrayBasedQueue<String>()}
         });
     }
 

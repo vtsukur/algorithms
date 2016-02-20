@@ -3,11 +3,11 @@ package org.vtsukur.algorithms.queue;
 /**
  * @author volodymyr.tsukur
  */
-public interface Queue {
+public interface Queue<T> {
 
-    void enqueue(String item);
+    void enqueue(T item);
 
-    String dequeue();
+    T dequeue();
 
     boolean isEmpty();
 
