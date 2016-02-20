@@ -36,8 +36,7 @@ public final class ArrayBasedQueueOfStrings implements QueueOfStrings {
             throw new NoSuchElementException("Can't dequeue from empty queue");
         }
 
-        if ((tail - head) == array.length / 4) {
-            pack();
+        if (size == array.length / 4) {
             resize(array.length / 2);
         }
 
@@ -52,7 +51,8 @@ public final class ArrayBasedQueueOfStrings implements QueueOfStrings {
     private void resize(final int capacity) {
         final String[] oldArray = array;
         array = new String[capacity];
-        System.arraycopy(oldArray, 0, array, 0, tail);
+        System.arraycopy(oldArray, head, array, 0, size);
+        head = 0;
     }
 
     private void pack() {
