@@ -52,11 +52,13 @@ public final class CustomLinkedListBasedStackOfStrings implements StackOfStrings
     /**
      * @author volodymyr.tsukur
      */
-    private static final class Node {
+    private static final class Node { // 32 bytes overhead for each entry
 
-        String value;
+        // 16 bytes object overhead
 
-        Node next;
+        String value; // 8 bytes pointer overhead
+
+        Node next; // 8 bytes pointer overhead
 
         public Node(final String value, final Node next) {
             this.value = value;
