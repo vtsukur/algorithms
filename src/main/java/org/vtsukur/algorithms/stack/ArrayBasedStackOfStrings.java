@@ -54,4 +54,9 @@ public final class ArrayBasedStackOfStrings implements StackOfStrings {
         return size;
     }
 
+    @Override
+    public String toString() {
+        return "based on resizable array";
+    }
+
 }
