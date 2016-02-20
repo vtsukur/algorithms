@@ -40,6 +40,11 @@ public final class CustomLinkedListBasedStackOfStrings implements StackOfStrings
         return size;
     }
 
+    @Override
+    public String toString() {
+        return "based on custom implementation of linked list";
+    }
+
     private static final class Node {
 
         String value;

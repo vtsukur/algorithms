@@ -1,18 +1,35 @@
 package org.vtsukur.algorithms.stack;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+
+import java.util.Arrays;
+import java.util.Collection;
 
 import static org.junit.Assert.assertEquals;
 
 /**
  * @author volodymyr.tsukur
  */
+@RunWith(Parameterized.class)
 public class StackOfStringsTest {
 
-    @Test
-    public void pushPop() {
-        StackOfStrings stack = new CustomLinkedListBasedStackOfStrings();
+    private final StackOfStrings stack;
 
+    public StackOfStringsTest(final StackOfStrings stack) {
+        this.stack = stack;
+    }
+
+    @Parameterized.Parameters(name = "{0}")
+    public static Collection<Object[]> implementations() {
+        return Arrays.asList(new Object[][]{
+                {new CustomLinkedListBasedStackOfStrings()}
+        });
+    }
+
+    @Test
+    public void test() {
         stack.push("5");
         assertSizeAndEmptyFlag(stack, 1);
         assertEquals(stack.pop(), "5");
