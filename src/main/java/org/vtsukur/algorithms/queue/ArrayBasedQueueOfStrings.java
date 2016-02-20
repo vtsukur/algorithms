@@ -7,9 +7,9 @@ import java.util.NoSuchElementException;
  */
 public final class ArrayBasedQueueOfStrings implements QueueOfStrings {
 
-    private int leftCounter;
+    private int head;
 
-    private int rightCounter;
+    private int tail;
 
     private int size;
 
@@ -17,16 +17,16 @@ public final class ArrayBasedQueueOfStrings implements QueueOfStrings {
 
     @Override
     public void enqueue(final String item) {
-        if (rightCounter == array.length) {
-            if (leftCounter == 0) {
-                resize(rightCounter * 2);
+        if (tail == array.length) {
+            if (head == 0) {
+                resize(tail * 2);
             } else {
                 pack();
             }
         }
 
-        array[rightCounter] = item;
-        rightCounter++;
+        array[tail] = item;
+        tail++;
         size++;
     }
 
@@ -36,14 +36,14 @@ public final class ArrayBasedQueueOfStrings implements QueueOfStrings {
             throw new NoSuchElementException("Can't dequeue from empty queue");
         }
 
-        if ((rightCounter - leftCounter) == array.length / 4) {
+        if ((tail - head) == array.length / 4) {
             pack();
             resize(array.length / 2);
         }
 
-        final String item = array[leftCounter];
-        array[leftCounter] = null;
-        leftCounter++;
+        final String item = array[head];
+        array[head] = null;
+        head++;
         size--;
 
         return item;
@@ -52,19 +52,19 @@ public final class ArrayBasedQueueOfStrings implements QueueOfStrings {
     private void resize(final int capacity) {
         final String[] oldArray = array;
         array = new String[capacity];
-        System.arraycopy(oldArray, 0, array, 0, rightCounter);
+        System.arraycopy(oldArray, 0, array, 0, tail);
     }
 
     private void pack() {
-        int i = leftCounter;
-        while (i < rightCounter) {
-            array[i - leftCounter] = array[i];
+        int i = head;
+        while (i < tail) {
+            array[i - head] = array[i];
             array[i] = null;
             ++i;
         }
 
-        rightCounter -= leftCounter;
-        leftCounter = 0;
+        tail -= head;
+        head = 0;
     }
 
     @Override
