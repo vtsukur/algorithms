@@ -49,11 +49,6 @@ public class StackTest {
         assertEquals(stack.pop(), "4");
         assertSizeAndEmptyFlag(stack, 0);
 
-        stack.push("1");
-        assertSizeAndEmptyFlag(stack, 1);
-        assertEquals(stack.pop(), "1");
-        assertSizeAndEmptyFlag(stack, 0);
-
         stack.push("2");
         stack.push("6");
         stack.push("7");
@@ -67,6 +62,11 @@ public class StackTest {
         assertEquals(stack.pop(), "7");
         assertEquals(stack.pop(), "6");
         assertEquals(stack.pop(), "2");
+        assertSizeAndEmptyFlag(stack, 0);
+
+        stack.push("1");
+        assertSizeAndEmptyFlag(stack, 1);
+        assertEquals(stack.pop(), "1");
         assertSizeAndEmptyFlag(stack, 0);
     }
 

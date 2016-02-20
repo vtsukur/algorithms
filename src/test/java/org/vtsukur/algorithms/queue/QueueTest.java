@@ -49,11 +49,6 @@ public class QueueTest {
         assertEquals(queue.dequeue(), "3");
         assertSizeAndEmptyFlag(queue, 0);
 
-        queue.enqueue("1");
-        assertSizeAndEmptyFlag(queue, 1);
-        assertEquals(queue.dequeue(), "1");
-        assertSizeAndEmptyFlag(queue, 0);
-
         queue.enqueue("2");
         queue.enqueue("6");
         queue.enqueue("7");
@@ -67,6 +62,11 @@ public class QueueTest {
         assertEquals(queue.dequeue(), "8");
         assertEquals(queue.dequeue(), "9");
         assertEquals(queue.dequeue(), "10");
+        assertSizeAndEmptyFlag(queue, 0);
+
+        queue.enqueue("1");
+        assertSizeAndEmptyFlag(queue, 1);
+        assertEquals(queue.dequeue(), "1");
         assertSizeAndEmptyFlag(queue, 0);
     }
 

@@ -56,6 +56,7 @@ public final class ArrayBasedQueue<T> implements Queue<T> {
         array = (T[]) new Object[capacity];
         System.arraycopy(oldArray, head, array, 0, size);
         head = 0;
+        tail = size;
     }
 
     private void pack() {
