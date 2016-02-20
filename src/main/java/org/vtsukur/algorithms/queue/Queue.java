@@ -3,7 +3,7 @@ package org.vtsukur.algorithms.queue;
 /**
  * @author volodymyr.tsukur
  */
-public interface Queue<T> {
+public interface Queue<T> extends Iterable<T> {
 
     void enqueue(T item);
 

@@ -1,5 +1,6 @@
 package org.vtsukur.algorithms.queue;
 
+import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
@@ -82,6 +83,32 @@ public final class ArrayBasedQueue<T> implements Queue<T> {
     @Override
     public String toString() {
         return "based on resizable array";
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new QueueIterator();
+    }
+
+    /**
+     * @author volodymyr.tsukur
+     */
+    private final class QueueIterator implements Iterator<T> {
+
+        private int i = head;
+
+        @Override
+        public boolean hasNext() {
+            return i < tail;
+        }
+
+        @Override
+        public T next() {
+            final T el = array[i];
+            i++;
+            return el;
+        }
+
     }
 
 }

@@ -6,8 +6,11 @@ import org.junit.runners.Parameterized;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Iterator;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 /**
  * @author volodymyr.tsukur
@@ -65,6 +68,22 @@ public class QueueTest {
         assertEquals(queue.dequeue(), "9");
         assertEquals(queue.dequeue(), "10");
         assertSizeAndEmptyFlag(queue, 0);
+    }
+
+    @Test
+    public void iterator() {
+        queue.enqueue("1");
+        queue.enqueue("2");
+        queue.enqueue("3");
+
+        Iterator<String> i = queue.iterator();
+        assertTrue(i.hasNext());
+        assertEquals(i.next(), "1");
+        assertTrue(i.hasNext());
+        assertEquals(i.next(), "2");
+        assertTrue(i.hasNext());
+        assertEquals(i.next(), "3");
+        assertFalse(i.hasNext());
     }
 
     private static void assertSizeAndEmptyFlag(final Queue queue, final int expectedSize) {

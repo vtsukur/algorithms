@@ -1,5 +1,6 @@
 package org.vtsukur.algorithms.queue;
 
+import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
@@ -60,6 +61,11 @@ public final class CustomLinkedListBasedQueue<T> implements Queue<T> {
         return "based on custom implementation of linked list";
     }
 
+    @Override
+    public Iterator<T> iterator() {
+        return new QueueIterator<>(head);
+    }
+
     /**
      * @author volodymyr.tsukur
      */
@@ -74,6 +80,31 @@ public final class CustomLinkedListBasedQueue<T> implements Queue<T> {
         public Node(final T value, final Node<T> next) {
             this.value = value;
             this.next = next;
+        }
+
+    }
+
+    /**
+     * @author volodymyr.tsukur
+     */
+    private static final class QueueIterator<T> implements Iterator<T> {
+
+        private Node<T> head;
+
+        public QueueIterator(final Node<T> head) {
+            this.head = head;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return head != null;
+        }
+
+        @Override
+        public T next() {
+            final T value = head.value;
+            head = head.next;
+            return value;
         }
 
     }
