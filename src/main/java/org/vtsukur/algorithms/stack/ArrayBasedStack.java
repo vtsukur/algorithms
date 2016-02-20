@@ -5,14 +5,15 @@ import java.util.NoSuchElementException;
 /**
  * @author volodymyr.tsukur
  */
-public final class ArrayBasedStack implements Stack {
+public final class ArrayBasedStack<T> implements Stack<T> {
 
     private int size;
 
-    private String[] array = new String[1];
+    @SuppressWarnings("unchecked")
+    private T[] array = (T[]) new Object[1];
 
     @Override
-    public void push(final String item) {
+    public void push(final T item) {
         if (size == array.length) {
             resize(size * 2);
         }
@@ -22,7 +23,7 @@ public final class ArrayBasedStack implements Stack {
     }
 
     @Override
-    public String pop() {
+    public T pop() {
         if (isEmpty()) {
             throw new NoSuchElementException("Can't pop from empty stack");
         }
@@ -32,15 +33,16 @@ public final class ArrayBasedStack implements Stack {
         }
 
         --size;
-        final String item = array[size];
+        final T item = array[size];
         array[size] = null;
 
         return item;
     }
 
+    @SuppressWarnings("unchecked")
     private void resize(final int capacity) {
-        final String[] oldArray = array;
-        array = new String[capacity];
+        final T[] oldArray = array;
+        array = (T[]) new Object[capacity];
         System.arraycopy(oldArray, 0, array, 0, size);
     }
 

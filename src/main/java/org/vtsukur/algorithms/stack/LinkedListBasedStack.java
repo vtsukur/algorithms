@@ -6,17 +6,17 @@ import java.util.NoSuchElementException;
 /**
  * @author volodymyr.tsukur
  */
-public final class LinkedListBasedStack implements Stack {
+public final class LinkedListBasedStack<T> implements Stack<T> {
 
-    private final LinkedList<String> list = new LinkedList<>();
+    private final LinkedList<T> list = new LinkedList<>();
 
     @Override
-    public void push(final String item) {
+    public void push(final T item) {
         list.addFirst(item);
     }
 
     @Override
-    public String pop() {
+    public T pop() {
         if (isEmpty()) {
             throw new NoSuchElementException("Can't pop from empty stack");
         }

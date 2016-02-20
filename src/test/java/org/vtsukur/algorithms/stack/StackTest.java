@@ -15,9 +15,9 @@ import static org.junit.Assert.assertEquals;
 @RunWith(Parameterized.class)
 public class StackTest {
 
-    private final Stack stack;
+    private final Stack<String> stack;
 
-    public StackTest(final Stack stack) {
+    public StackTest(final Stack<String> stack) {
         this.stack = stack;
     }
 

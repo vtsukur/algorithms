@@ -3,11 +3,11 @@ package org.vtsukur.algorithms.stack;
 /**
  * @author volodymyr.tsukur
  */
-public interface Stack {
+public interface Stack<T> {
 
-    void push(String item);
+    void push(T item);
 
-    String pop();
+    T pop();
 
     boolean isEmpty();
 
