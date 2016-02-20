@@ -24,7 +24,8 @@ public class StackOfStringsTest {
     @Parameterized.Parameters(name = "{0}")
     public static Collection<Object[]> implementations() {
         return Arrays.asList(new Object[][]{
-                {new CustomLinkedListBasedStackOfStrings()}
+                {new CustomLinkedListBasedStackOfStrings()},
+                {new LinkedListBasedStackOfStrings()}
         });
     }
 
