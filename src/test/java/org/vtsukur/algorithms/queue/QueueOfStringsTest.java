@@ -24,6 +24,7 @@ public class QueueOfStringsTest {
     @Parameterized.Parameters(name = "{0}")
     public static Collection<Object[]> implementations() {
         return Arrays.asList(new Object[][]{
+                {new CustomLinkedListBasedQueueOfStrings()},
                 {new LinkedListBasedQueueOfStrings()},
         });
     }
