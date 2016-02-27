@@ -36,6 +36,15 @@ public final class CustomLinkedListBasedStack<T> implements Stack<T> {
     }
 
     @Override
+    public T peek() {
+        if (isEmpty()) {
+            throw new NoSuchElementException("Can't peek from empty stack");
+        }
+
+        return head.value;
+    }
+
+    @Override
     public boolean isEmpty() {
         return size() == 0;
     }

@@ -39,16 +39,16 @@ public class StackTest {
 
         stack.push("5");
         assertSizeAndEmptyFlag(stack, 1);
-        assertEquals(stack.pop(), "5");
+        assertPeekAndPop(stack, "5");
         assertSizeAndEmptyFlag(stack, 0);
 
         stack.push("4");
         assertSizeAndEmptyFlag(stack, 1);
         stack.push("3");
         assertSizeAndEmptyFlag(stack, 2);
-        assertEquals(stack.pop(), "3");
+        assertPeekAndPop(stack, "3");
         assertSizeAndEmptyFlag(stack, 1);
-        assertEquals(stack.pop(), "4");
+        assertPeekAndPop(stack, "4");
         assertSizeAndEmptyFlag(stack, 0);
 
         stack.push("2");
@@ -58,17 +58,17 @@ public class StackTest {
         stack.push("9");
         stack.push("10");
         assertSizeAndEmptyFlag(stack, 6);
-        assertEquals(stack.pop(), "10");
-        assertEquals(stack.pop(), "9");
-        assertEquals(stack.pop(), "8");
-        assertEquals(stack.pop(), "7");
-        assertEquals(stack.pop(), "6");
-        assertEquals(stack.pop(), "2");
+        assertPeekAndPop(stack, "10");
+        assertPeekAndPop(stack, "9");
+        assertPeekAndPop(stack, "8");
+        assertPeekAndPop(stack, "7");
+        assertPeekAndPop(stack, "6");
+        assertPeekAndPop(stack, "2");
         assertSizeAndEmptyFlag(stack, 0);
 
         stack.push("1");
         assertSizeAndEmptyFlag(stack, 1);
-        assertEquals(stack.pop(), "1");
+        assertPeekAndPop(stack, "1");
         assertSizeAndEmptyFlag(stack, 0);
     }
 
@@ -93,6 +93,11 @@ public class StackTest {
     private static void assertSizeAndEmptyFlag(final Stack stack, final int expectedSize) {
         assertEquals(stack.size(), expectedSize);
         assertEquals(stack.isEmpty(), expectedSize == 0);
+    }
+
+    private static <T> void assertPeekAndPop(final Stack<T> stack, final T expected) {
+        assertEquals(stack.peek(), expected);
+        assertEquals(stack.pop(), expected);
     }
 
     /**

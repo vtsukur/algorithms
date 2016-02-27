@@ -40,6 +40,15 @@ public final class ArrayBasedStack<T> implements Stack<T> {
         return item;
     }
 
+    @Override
+    public T peek() {
+        if (isEmpty()) {
+            throw new NoSuchElementException("Can't peek from empty stack");
+        }
+
+        return array[size - 1];
+    }
+
     @SuppressWarnings("unchecked")
     private void resize(final int capacity) {
         final T[] oldArray = array;

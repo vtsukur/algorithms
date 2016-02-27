@@ -26,6 +26,15 @@ public final class LinkedListBasedStack<T> implements Stack<T> {
     }
 
     @Override
+    public T peek() {
+        if (isEmpty()) {
+            throw new NoSuchElementException("Can't peek from empty stack");
+        }
+
+        return list.getFirst();
+    }
+
+    @Override
     public boolean isEmpty() {
         return list.isEmpty();
     }
