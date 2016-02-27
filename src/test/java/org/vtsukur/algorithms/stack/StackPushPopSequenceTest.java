@@ -48,7 +48,7 @@ public class StackPushPopSequenceTest {
 
         final int[] values;
 
-        public IntArray(int... values) {
+        public IntArray(final int... values) {
             this.values = values;
         }
 
