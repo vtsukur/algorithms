@@ -4,6 +4,7 @@ import org.vtsukur.algorithms.stack.ArrayBasedStack;
 import org.vtsukur.algorithms.stack.Stack;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 /**
  * @author volodymyr.tsukur
@@ -16,33 +17,71 @@ public final class TwoStacksBasedQueue<T> implements Queue<T> {
 
     @Override
     public void enqueue(final T item) {
-        while (!second.isEmpty()) {
-            first.push(second.pop());
+        first.push(item);
+    }
+
+    @Override
+    public T dequeue() {
+        if (second.isEmpty()) {
+            pad();
         }
-        second.push(item);
+
+        return second.pop();
+    }
+
+    private void pad() {
         while (!first.isEmpty()) {
             second.push(first.pop());
         }
     }
 
     @Override
-    public T dequeue() {
-        return second.pop();
-    }
-
-    @Override
     public boolean isEmpty() {
-        return second.isEmpty();
+        return first.isEmpty() && second.isEmpty();
     }
 
     @Override
     public int size() {
-        return second.size();
+        return first.size() + second.size();
     }
 
     @Override
     public Iterator<T> iterator() {
-        return second.iterator();
+        return new Itr();
+    }
+
+    /**
+     * @author volodymyr.tsukur
+     */
+    private final class Itr implements Iterator<T> {
+
+        private Iterator<T> initial = second.iterator();
+
+        private Iterator<T> active = initial;
+
+        @Override
+        public boolean hasNext() {
+            switchActiveIfInitialIsEmptied();
+            return active.hasNext();
+        }
+
+        private void switchActiveIfInitialIsEmptied() {
+            if (active == initial && !active.hasNext()) {
+                pad();
+                active = second.iterator();
+            }
+        }
+
+        @Override
+        public T next() {
+            switchActiveIfInitialIsEmptied();
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
+
+            return active.next();
+        }
+
     }
 
 }
