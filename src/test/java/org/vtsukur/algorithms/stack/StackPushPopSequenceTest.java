@@ -14,13 +14,13 @@ import static org.junit.Assert.assertThat;
  * @author volodymyr.tsukur
  */
 @RunWith(Parameterized.class)
-public class StackTerminatingPushPopSequenceTest {
+public class StackPushPopSequenceTest {
 
     private final IntArray sequence;
 
     private final boolean valid;
 
-    public StackTerminatingPushPopSequenceTest(final IntArray sequence, final boolean valid) {
+    public StackPushPopSequenceTest(final IntArray sequence, final boolean valid) {
         this.sequence = sequence;
         this.valid = valid;
     }
@@ -38,7 +38,7 @@ public class StackTerminatingPushPopSequenceTest {
 
     @Test
     public void test() {
-        assertThat(StackTerminatingPushPopSequence.isValid(sequence.values), is(valid));
+        assertThat(StackPushPopSequence.isValid(sequence.values), is(valid));
     }
 
     /**

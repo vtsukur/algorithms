@@ -3,7 +3,7 @@ package org.vtsukur.algorithms.stack;
 /**
  * @author volodymyr.tsukur
  */
-public final class StackTerminatingPushPopSequence {
+public final class StackPushPopSequence {
 
     public static boolean isValid(final int[] sequence) {
         final Stack<Integer> stack = new ArrayBasedStack<>();
