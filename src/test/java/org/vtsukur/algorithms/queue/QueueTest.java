@@ -27,7 +27,8 @@ public class QueueTest {
         return Arrays.asList(new Object[][]{
                 {new Provider(CustomLinkedListBasedQueue::new, "based on custom implementation of linked list")},
                 {new Provider(LinkedListBasedQueue::new, "based on linked list")},
-                {new Provider(ArrayBasedQueue::new, "based on resizable array")}
+                {new Provider(ArrayBasedQueue::new, "based on resizable array")},
+                {new Provider(TwoStacksBasedQueue::new, "based on two stacks")}
         });
     }
 
