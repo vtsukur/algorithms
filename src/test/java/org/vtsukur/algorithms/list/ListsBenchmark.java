@@ -21,7 +21,7 @@ import static java.lang.invoke.MethodHandles.lookup;
 @State(Scope.Benchmark)
 public class ListsBenchmark {
 
-    private static final int MAX = 1_000_000;
+    private static final int MAX = 100_000;
 
     private final ArrayList<Integer> arrayList = new ArrayList<>();
 
@@ -44,7 +44,7 @@ public class ListsBenchmark {
 
     @Benchmark
     public void benchmarkLinkedList() {
-        iterateAddRemove(arrayList);
+        iterateAddRemove(linkedList);
     }
 
     private static void iterateAddRemove(final List<Integer> list) {
@@ -69,8 +69,8 @@ public class ListsBenchmark {
                 .threads(1)
                 .timeUnit(TimeUnit.MILLISECONDS)
                 .mode(Mode.AverageTime)
-                .warmupIterations(5)
-                .measurementIterations(5)
+                .warmupIterations(20)
+                .measurementIterations(20)
                 .build();
     }
 
