@@ -29,7 +29,8 @@ public class StackTest {
         return Arrays.asList(new Object[][]{
                 {new Provider(CustomLinkedListBasedStack::new, "based on custom implementation of linked list")},
                 {new Provider(LinkedListBasedStack::new, "based on linked list")},
-                {new Provider(ArrayBasedStack::new, "based on resizable array")}
+                {new Provider(ArrayBasedStack::new, "based on resizable array")},
+                {new Provider(ArrayBasedMinMaxStack::new, "based on resizable array with support for min and max")}
         });
     }
 
