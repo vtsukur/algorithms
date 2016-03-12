@@ -8,7 +8,7 @@ import static org.vtsukur.algorithms.sort.SortUtils.swap;
 /**
  * @author volodymyr.tsukur
  */
-public class SelectionSort<T extends Comparable<T>> implements Sort<T> {
+public final class SelectionSort<T extends Comparable<T>> implements Sort<T> {
 
     public void sort(final T[] array) {
         for (int i = 0; i < array.length - 1; ++i) {
