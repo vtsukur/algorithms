@@ -3,7 +3,7 @@ package org.vtsukur.algorithms.sort;
 /**
  * @author volodymyr.tsukur
  */
-public final class InsertionSort<T extends Comparable<T>> implements Sort<T> {
+public final class InsertionSort<T extends Comparable<T>> extends BaseSort<T> {
 
     @Override
     public void sort(final T[] array) {
