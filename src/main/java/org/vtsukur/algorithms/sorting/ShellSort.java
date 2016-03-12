@@ -12,7 +12,7 @@ public final class ShellSort<T extends Comparable<T>> extends BaseSort<T> {
         int h = initialHFactorByKnuth(array.length);
         while (h > 0) {
             insertionSort.sort(array, h);
-            h /= 3;
+            h = (h - 1) / 3;
         }
     }
 
