@@ -24,7 +24,8 @@ public class SortTest {
     @Parameterized.Parameters(name = "{0}")
     public static Collection<Object[]> strategies() {
         return Arrays.asList(new Object[][] {
-                { new SelectionSort<Integer>() }
+                { new SelectionSort<Integer>() },
+                { new InsertionSort<Integer>() }
         });
     }
 
