@@ -1,4 +1,4 @@
-package org.vtsukur.algorithms.sorting;
+package org.vtsukur.algorithms.sort;
 
 /**
  * @author volodymyr.tsukur

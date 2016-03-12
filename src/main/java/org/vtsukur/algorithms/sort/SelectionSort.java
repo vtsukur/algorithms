@@ -1,9 +1,9 @@
-package org.vtsukur.algorithms.sorting;
+package org.vtsukur.algorithms.sort;
 
 import org.vtsukur.algorithms.util.StringUtils;
 
-import static org.vtsukur.algorithms.sorting.SortUtils.less;
-import static org.vtsukur.algorithms.sorting.SortUtils.swap;
+import static org.vtsukur.algorithms.sort.SortUtils.less;
+import static org.vtsukur.algorithms.sort.SortUtils.swap;
 
 /**
  * @author volodymyr.tsukur

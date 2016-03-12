@@ -1,4 +1,4 @@
-package org.vtsukur.algorithms.sorting;
+package org.vtsukur.algorithms.sort;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
