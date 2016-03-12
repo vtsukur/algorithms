@@ -25,7 +25,8 @@ public class SortTest {
     public static Collection<Object[]> strategies() {
         return Arrays.asList(new Object[][] {
                 { new SelectionSort<Integer>() },
-                { new InsertionSort<Integer>() }
+                { new InsertionSort<Integer>() },
+                { new ShellSort<Integer>() }
         });
     }
 
