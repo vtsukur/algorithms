@@ -11,11 +11,13 @@ public final class InsertionSort<T extends Comparable<T>> extends BaseSort<T> {
     }
 
     void sort(final T[] array, final int h) {
-        for (int i = h; i < array.length; i += h) {
-            int j = i;
-            while (j - h >= 0 && SortUtils.less(array[j], array[j - h])) {
-                SortUtils.swap(array, j, j - h);
-                j -= h;
+        for (int k = 0; k < h; ++k) {
+            for (int i = k; i < array.length; i += h) {
+                int j = i;
+                while (j - h >= 0 && SortUtils.less(array[j], array[j - h])) {
+                    SortUtils.swap(array, j, j - h);
+                    j -= h;
+                }
             }
         }
     }
