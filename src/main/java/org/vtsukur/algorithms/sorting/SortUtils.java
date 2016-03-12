@@ -3,7 +3,7 @@ package org.vtsukur.algorithms.sorting;
 /**
  * @author volodymyr.tsukur
  */
-public final class SortUtils {
+final class SortUtils {
 
     public static <T extends Comparable<T>> boolean less(final T left, final T right) {
         return left.compareTo(right) < 0;
