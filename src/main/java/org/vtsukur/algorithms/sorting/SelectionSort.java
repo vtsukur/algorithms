@@ -6,9 +6,9 @@ import static org.vtsukur.algorithms.sorting.SortUtils.swap;
 /**
  * @author volodymyr.tsukur
  */
-public final class SelectionSort {
+public class SelectionSort<T extends Comparable<T>> implements Sort<T> {
 
-    public static <T extends Comparable<T>> void sort(final T[] array) {
+    public void sort(final T[] array) {
         for (int i = 0; i < array.length - 1; ++i) {
             int min = i;
             for (int j = i + 1; j < array.length; ++j) {
@@ -18,6 +18,11 @@ public final class SelectionSort {
             }
             swap(array, i, min);
         }
+    }
+
+    @Override
+    public String toString() {
+        return "selection sort";
     }
 
 }
