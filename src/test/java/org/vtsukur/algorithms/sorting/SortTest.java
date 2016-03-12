@@ -6,6 +6,10 @@ import org.junit.runners.Parameterized;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static org.junit.Assert.assertArrayEquals;
 
@@ -32,9 +36,26 @@ public class SortTest {
 
     @Test
     public void sort() {
-        final Integer[] array = new Integer[] { 7, 10, 5, 3, 8, 4, 2, 9, 6 };
+        final Integer[] array = newRandomArray();
+
         strategy.sort(array);
-        assertArrayEquals(array, new Integer[] { 2, 3, 4, 5, 6, 7, 8, 9, 10 });
+        final Integer[] reference = referenceSortedArray(array);
+
+        assertArrayEquals(array, reference);
+    }
+
+    private Integer[] newRandomArray() {
+        final List<Integer> collection = IntStream.range(0, 100)
+                .mapToObj(Integer::valueOf)
+                .collect(Collectors.toList());
+        Collections.shuffle(collection);
+        return collection.toArray(new Integer[collection.size()]);
+    }
+
+    private Integer[] referenceSortedArray(Integer[] array) {
+        final Integer[] reference = Arrays.copyOf(array, array.length);
+        Arrays.sort(reference);
+        return reference;
     }
 
 }
