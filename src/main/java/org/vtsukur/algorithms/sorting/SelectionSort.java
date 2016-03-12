@@ -1,5 +1,7 @@
 package org.vtsukur.algorithms.sorting;
 
+import org.vtsukur.algorithms.util.StringUtils;
+
 import static org.vtsukur.algorithms.sorting.SortUtils.less;
 import static org.vtsukur.algorithms.sorting.SortUtils.swap;
 
@@ -22,7 +24,7 @@ public class SelectionSort<T extends Comparable<T>> implements Sort<T> {
 
     @Override
     public String toString() {
-        return "selection sort";
+        return StringUtils.humanizeClassNameLowerCase(getClass());
     }
 
 }
