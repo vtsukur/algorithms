@@ -1,4 +1,4 @@
-package org.vtsukur.algorithms.sort;
+package org.vtsukur.algorithms.sorting;
 
 import org.vtsukur.algorithms.util.StringUtils;
 

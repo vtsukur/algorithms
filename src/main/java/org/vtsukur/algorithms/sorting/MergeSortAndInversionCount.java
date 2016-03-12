@@ -1,4 +1,4 @@
-package org.vtsukur.algorithms.sort;
+package org.vtsukur.algorithms.sorting;
 
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
