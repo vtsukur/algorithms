@@ -17,6 +17,13 @@ dependencies {
   testCompile("junit:junit:4.12")
 }
 
+tasks.withType(JavaCompile) {
+  options.compilerArgs += [
+      "-processor",
+      "lombok.launch.AnnotationProcessorHider\$AnnotationProcessor"
+  ]
+}
+
 task wrapper(type: Wrapper) {
   gradleVersion = "2.9"
 }

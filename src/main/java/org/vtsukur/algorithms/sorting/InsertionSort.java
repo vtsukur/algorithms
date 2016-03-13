@@ -3,14 +3,14 @@ package org.vtsukur.algorithms.sorting;
 /**
  * @author volodymyr.tsukur
  */
-public final class InsertionSort<T extends Comparable<T>> extends BaseSort<T> {
+public final class InsertionSort extends BaseSort {
 
     @Override
-    public void sort(final T[] array) {
+    public <T extends Comparable<T>> void sort(final T[] array) {
         sort(array, 1);
     }
 
-    void sort(final T[] array, final int h) {
+    <T extends Comparable<T>> void sort(final T[] array, final int h) {
         for (int i = h; i < array.length; ++i) {
             int j = i;
             while (j >= h && SortUtils.less(array[j], array[j - h])) {

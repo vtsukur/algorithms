@@ -3,12 +3,12 @@ package org.vtsukur.algorithms.sorting;
 /**
  * @author volodymyr.tsukur
  */
-public final class ShellSort<T extends Comparable<T>> extends BaseSort<T> {
+public final class ShellSort extends BaseSort {
 
-    private final InsertionSort<T> insertionSort = new InsertionSort<>();
+    private final InsertionSort insertionSort = new InsertionSort();
 
     @Override
-    public void sort(final T[] array) {
+    public <T extends Comparable<T>> void sort(final T[] array) {
         int h = initialHFactorByKnuth(array.length);
         while (h > 0) {
             insertionSort.sort(array, h);

@@ -1,5 +1,6 @@
 package org.vtsukur.algorithms.sorting;
 
+import lombok.RequiredArgsConstructor;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -17,20 +18,17 @@ import static org.junit.Assert.assertArrayEquals;
  * @author volodymyr.tsukur
  */
 @RunWith(Parameterized.class)
+@RequiredArgsConstructor
 public class SortTest {
 
-    private final Sort<Integer> strategy;
-
-    public SortTest(final Sort<Integer> strategy) {
-        this.strategy = strategy;
-    }
+    private final Sort strategy;
 
     @Parameterized.Parameters(name = "{0}")
     public static Collection<Object[]> strategies() {
         return Arrays.asList(new Object[][] {
-                { new SelectionSort<Integer>() },
-                { new InsertionSort<Integer>() },
-                { new ShellSort<Integer>() }
+                { new SelectionSort() },
+                { new InsertionSort() },
+                { new ShellSort() }
         });
     }
 
