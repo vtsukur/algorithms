@@ -1,5 +1,6 @@
 package org.vtsukur.algorithms.sorting;
 
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,7 +22,7 @@ import static org.junit.Assert.assertArrayEquals;
 @RequiredArgsConstructor
 public class SortTest {
 
-    private final Sort strategy;
+    private final @NonNull Sort strategy;
 
     @Parameterized.Parameters(name = "{0}")
     public static Collection<Object[]> strategies() {
