@@ -36,9 +36,9 @@ public class SortTest {
     @Test
     public void sort() {
         val array = newRandomArray(100);
+        val reference = referenceSortedArray(array);
 
         strategy.sort(array);
-        val reference = referenceSortedArray(array);
 
         assertArrayEquals(array, reference);
     }
