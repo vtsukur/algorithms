@@ -7,7 +7,7 @@ import java.util.Random;
 /**
  * @author volodymyr.tsukur
  */
-public final class KnuthBasedShuffle implements Shuffle {
+public final class DurstenfeldShuffle implements Shuffle {
 
     private static final Random RANDOM = new Random();
 
