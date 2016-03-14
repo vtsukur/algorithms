@@ -30,12 +30,12 @@ public class ShufflingTest {
 
     @Test
     public void test() {
-        final Integer[] array = newRange(0, 5);
+        final Integer[] array = newRange(0, 100);
         final List<Integer> reference = copyOfAsList(array);
 
         shuffle.shuffle(array);
 
-        // TODO test is shuffling is really random
+        // TODO test that shuffling is "really" random
 
         final Double[] probabilities = new Double[array.length + 1];
         probabilities[array.length - 1] = 0.0;
