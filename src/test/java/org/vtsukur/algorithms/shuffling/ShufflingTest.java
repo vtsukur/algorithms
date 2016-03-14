@@ -35,6 +35,7 @@ public class ShufflingTest {
         final List<Integer> reference = copyOfAsList(array);
 
         shuffle.shuffle(array);
+        System.out.println(Arrays.toString(array));
 
         // TODO test that shuffling is "really" random
 
