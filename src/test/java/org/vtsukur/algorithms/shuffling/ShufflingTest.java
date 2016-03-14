@@ -24,7 +24,8 @@ public class ShufflingTest {
     @Parameterized.Parameters(name = "{0}")
     public static Collection<Object[]> strategies() {
         return Arrays.asList(new Object[][] {
-                { new DurstenfeldShuffle() }
+                { new DurstenfeldShuffle() },
+                { new SortBasedShuffle() }
         });
     }
 
