@@ -1,5 +1,7 @@
 package org.vtsukur.algorithms.shuffling;
 
+import org.vtsukur.algorithms.util.ArrayUtils;
+
 import java.util.Random;
 
 /**
@@ -13,9 +15,7 @@ public final class SortBasedShuffle implements Shuffle {
     public <T> void shuffle(final T[] array) {
         for (int i = 0; i < array.length; ++i) {
             final int r = RANDOM.nextInt(i + 1);
-            final T t = array[i];
-            array[i] = array[r];
-            array[r] = t;
+            ArrayUtils.swap(array, i, r);
         }
     }
 

@@ -1,7 +1,7 @@
 package org.vtsukur.algorithms.sorting;
 
-import static org.vtsukur.algorithms.sorting.SortUtils.less;
-import static org.vtsukur.algorithms.sorting.SortUtils.swap;
+import static org.vtsukur.algorithms.util.ComparableUtils.less;
+import static org.vtsukur.algorithms.util.ArrayUtils.swap;
 
 /**
  * @author volodymyr.tsukur
