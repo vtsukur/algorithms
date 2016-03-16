@@ -29,7 +29,8 @@ public class SortTest {
         return Arrays.asList(new Object[][] {
                 { new SelectionSort() },
                 { new InsertionSort() },
-                { new ShellSort() }
+                { new ShellSort() },
+                { new MergeSort() }
         });
     }
 
