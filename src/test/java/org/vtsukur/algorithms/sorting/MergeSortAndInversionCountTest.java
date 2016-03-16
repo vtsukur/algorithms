@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 /**
  * @author volodymyr.tsukur
  */
-public class MergeSortAndInversionCountAndInversionCountTest {
+public class MergeSortAndInversionCountTest {
 
     @Test
     public void eightNumbers() {
