@@ -3,7 +3,6 @@ package org.vtsukur.algorithms.sorting;
 import org.vtsukur.algorithms.util.ComparableUtils;
 
 import java.lang.reflect.Array;
-import java.util.Arrays;
 
 /**
  * @author volodymyr.tsukur
@@ -47,23 +46,22 @@ public final class MergeSort extends BaseSort {
         }
 
         void merge(final int from, final int middle, final int to, final int size) {
-            final int part1Size = middle - from;
+            System.arraycopy(array, from, aux, from, size);
 
-            final T[] cpy = Arrays.copyOfRange(array, from, to + 1);
-            int m = from;
-            int i = 0, j = part1Size;
-            while (i < part1Size && j < size) {
-                if (ComparableUtils.less(cpy[i], cpy[j])) {
-                    array[m++] = cpy[i++];
+            final int toExclusive = to + 1;
+            int m = from, i = m, j = middle;
+            while (i < middle && j < toExclusive) {
+                if (ComparableUtils.less(aux[i], aux[j])) {
+                    array[m++] = aux[i++];
                 } else {
-                    array[m++] = cpy[j++];
+                    array[m++] = aux[j++];
                 }
             }
-            while (i < part1Size) {
-                array[m++] = cpy[i++];
+            while (i < middle) {
+                array[m++] = aux[i++];
             }
-            while (j < size) {
-                array[m++] = cpy[j++];
+            while (j < toExclusive) {
+                array[m++] = aux[j++];
             }
         }
 
