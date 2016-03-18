@@ -9,7 +9,7 @@ import static org.vtsukur.algorithms.util.ComparableUtils.lessOrEqualTo;
 /**
  * @author volodymyr.tsukur
  */
-public final class QuickSort extends BaseSort {
+public final class QuickSortUnidirectionalPartition extends BaseSort {
 
     private static final Random RANDOM = new Random();
 
