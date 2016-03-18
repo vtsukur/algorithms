@@ -9,4 +9,8 @@ public final class ComparableUtils {
         return left.compareTo(right) < 0;
     }
 
+    public static <T extends Comparable<T>> boolean lessOrEqualTo(final T left, final T right) {
+        return left.compareTo(right) <= 0;
+    }
+
 }
