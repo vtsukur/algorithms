@@ -32,6 +32,7 @@ public class SortTest {
                 { new ShellSort() },
                 { new MergeSort() },
                 { new QuickSortUnidirectionalPartition() },
+                { new QuickSortBidirectionalPartition() }
         });
     }
 
