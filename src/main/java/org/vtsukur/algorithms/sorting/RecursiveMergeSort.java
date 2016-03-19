@@ -8,7 +8,7 @@ import static org.vtsukur.algorithms.util.ComparableUtils.lessOrEqualTo;
 /**
  * @author volodymyr.tsukur
  */
-public final class MergeSort extends BaseSort {
+public final class RecursiveMergeSort extends BaseSort {
 
     @Override
     public <T extends Comparable<T>> void sort(final T[] array) {

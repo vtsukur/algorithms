@@ -28,11 +28,11 @@ public class SortingBenchmark {
 
     private static final Random RANDOM = new Random();
 
-    private static final MergeSort MERGE_SORT = new MergeSort();
+    private static final RecursiveMergeSort RECURSIVE_MERGE_SORT = new RecursiveMergeSort();
 
     @Benchmark
-    public void benchmarkMergeSort() {
-        MERGE_SORT.sort(generateArrayOfNRandomItems());
+    public void benchmarkRecursiveMergeSort() {
+        RECURSIVE_MERGE_SORT.sort(generateArrayOfNRandomItems());
     }
 
     @Benchmark
