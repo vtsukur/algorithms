@@ -1,8 +1,5 @@
 package org.vtsukur.algorithms.sorting;
 
-import java.lang.reflect.Array;
-
-import static org.vtsukur.algorithms.util.ComparableUtils.less;
 import static org.vtsukur.algorithms.util.ComparableUtils.lessOrEqualTo;
 
 /**
@@ -18,24 +15,13 @@ public final class RecursiveMergeSort extends BaseSort {
     /**
      * @author volodymyr.tsukur
      */
-    private static final class Worker<T extends Comparable<T>> {
+    private final class Worker<T extends Comparable<T>> extends MergeSortWorker<T> {
 
-        final T[] array;
-
-        final T[] aux;
-
-        final InsertionSort insertionSort = new InsertionSort();
-
-        Worker(final T[] array) {
-            this.array = array;
-            //noinspection unchecked
-            aux = (T[]) Array.newInstance(array.getClass().getComponentType(), array.length);
+        Worker(T[] array) {
+            super(array);
         }
 
-        void sort() {
-            doSort(0, array.length - 1);
-        }
-
+        @Override
         void doSort(final int from, final int to) {
             final int size = to - from + 1;
             if (size <= 1) {
@@ -54,26 +40,6 @@ public final class RecursiveMergeSort extends BaseSort {
                 return;
             }
             merge(from, middle, to, size);
-        }
-
-        void merge(final int from, final int middle, final int to, final int size) {
-            System.arraycopy(array, from, aux, from, size);
-
-            final int toExclusive = to + 1;
-            int m = from, i = m, j = middle;
-            while (i < middle && j < toExclusive) {
-                if (less(aux[i], aux[j])) {
-                    array[m++] = aux[i++];
-                } else {
-                    array[m++] = aux[j++];
-                }
-            }
-            while (i < middle) {
-                array[m++] = aux[i++];
-            }
-            while (j < toExclusive) {
-                array[m++] = aux[j++];
-            }
         }
 
     }
