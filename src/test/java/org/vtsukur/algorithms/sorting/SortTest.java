@@ -39,7 +39,7 @@ public class SortTest {
 
     @Test
     public void sort() {
-        final Integer[] array = newRandomArray(100);
+        final Integer[] array = newRandomArray(10_000);
         final Integer[] reference = referenceSortedArray(array);
 
         strategy.sort(array);
