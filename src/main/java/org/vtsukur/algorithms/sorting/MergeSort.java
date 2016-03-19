@@ -1,8 +1,9 @@
 package org.vtsukur.algorithms.sorting;
 
-import org.vtsukur.algorithms.util.ComparableUtils;
-
 import java.lang.reflect.Array;
+
+import static org.vtsukur.algorithms.util.ComparableUtils.less;
+import static org.vtsukur.algorithms.util.ComparableUtils.lessOrEqualTo;
 
 /**
  * @author volodymyr.tsukur
@@ -49,7 +50,7 @@ public final class MergeSort extends BaseSort {
             final int middle = from + size / 2;
             doSort(from, middle - 1);
             doSort(middle, to);
-            if (ComparableUtils.lessOrEqualTo(array[middle - 1], array[middle])) {
+            if (lessOrEqualTo(array[middle - 1], array[middle])) {
                 return;
             }
             merge(from, middle, to, size);
@@ -61,7 +62,7 @@ public final class MergeSort extends BaseSort {
             final int toExclusive = to + 1;
             int m = from, i = m, j = middle;
             while (i < middle && j < toExclusive) {
-                if (ComparableUtils.less(aux[i], aux[j])) {
+                if (less(aux[i], aux[j])) {
                     array[m++] = aux[i++];
                 } else {
                     array[m++] = aux[j++];
