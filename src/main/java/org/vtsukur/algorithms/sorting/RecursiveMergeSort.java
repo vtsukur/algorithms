@@ -18,7 +18,7 @@ public final class RecursiveMergeSort extends BaseSort {
     /**
      * @author volodymyr.tsukur
      */
-    private static class Worker<T extends Comparable<T>> {
+    private static final class Worker<T extends Comparable<T>> {
 
         final T[] array;
 
