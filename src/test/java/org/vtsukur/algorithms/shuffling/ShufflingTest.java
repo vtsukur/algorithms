@@ -1,7 +1,5 @@
 package org.vtsukur.algorithms.shuffling;
 
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -16,10 +14,13 @@ import java.util.stream.IntStream;
  * @author volodymyr.tsukur
  */
 @RunWith(Parameterized.class)
-@RequiredArgsConstructor
 public class ShufflingTest {
 
-    private final @NonNull Shuffle shuffle;
+    private final Shuffle shuffle;
+
+    public ShufflingTest(final Shuffle shuffle) {
+        this.shuffle = shuffle;
+    }
 
     @Parameterized.Parameters(name = "{0}")
     public static Collection<Object[]> strategies() {
