@@ -49,6 +49,9 @@ public final class MergeSort extends BaseSort {
             final int middle = from + size / 2;
             doSort(from, middle - 1);
             doSort(middle, to);
+            if (ComparableUtils.lessOrEqualTo(array[middle - 1], array[middle])) {
+                return;
+            }
             merge(from, middle, to, size);
         }
 
