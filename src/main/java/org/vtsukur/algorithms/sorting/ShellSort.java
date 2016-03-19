@@ -11,7 +11,7 @@ public final class ShellSort extends BaseSort {
     public <T extends Comparable<T>> void sort(final T[] array) {
         int h = initialHFactorByKnuth(array.length);
         while (h > 0) {
-            insertionSort.sort(array, h);
+            insertionSort.sort(array, 0, array.length - 1, h);
             h = (h - 1) / 3;
         }
     }

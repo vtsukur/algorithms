@@ -23,6 +23,8 @@ public final class MergeSort extends BaseSort {
 
         final T[] aux;
 
+        final InsertionSort insertionSort = new InsertionSort();
+
         Worker(final T[] array) {
             this.array = array;
             //noinspection unchecked
@@ -36,6 +38,11 @@ public final class MergeSort extends BaseSort {
         void doSort(final int from, final int to) {
             final int size = to - from + 1;
             if (size <= 1) {
+                return;
+            }
+
+            if (size <= 7) {
+                insertionSort.sort(array, from, to);
                 return;
             }
 
