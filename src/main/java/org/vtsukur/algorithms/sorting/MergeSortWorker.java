@@ -21,7 +21,8 @@ abstract class MergeSortWorker<T extends Comparable<T>> {
 
     abstract void sort();
 
-    final void merge(final int from, final int middle, final int to, final int size) {
+    final void merge(final int from, final int middle, final int to) {
+        final int size = to - from + 1;
         System.arraycopy(array, from, aux, from, size);
 
         final int toExclusive = to + 1;

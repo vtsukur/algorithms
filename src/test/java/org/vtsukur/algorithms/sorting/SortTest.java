@@ -32,6 +32,7 @@ public class SortTest {
                 { new InsertionSort() },
                 { new ShellSort() },
                 { new RecursiveMergeSort() },
+                { new BottomUpMergeSort() },
                 { new QuickSortOneWaySearchPartitioning() },
                 { new QuickSortTwoWaySearchPartitioning() }
         });

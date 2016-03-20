@@ -45,7 +45,7 @@ public final class RecursiveMergeSort extends BaseSort {
             if (lessOrEqualTo(array[middle - 1], array[middle])) {
                 return;
             }
-            merge(from, middle, to, size);
+            merge(from, middle, to);
         }
 
     }
