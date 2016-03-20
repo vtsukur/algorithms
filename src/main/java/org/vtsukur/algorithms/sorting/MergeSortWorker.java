@@ -13,19 +13,13 @@ abstract class MergeSortWorker<T extends Comparable<T>> {
 
     final T[] aux;
 
-    final InsertionSort insertionSort = new InsertionSort();
-
     MergeSortWorker(final T[] array) {
         this.array = array;
         //noinspection unchecked
         aux = (T[]) Array.newInstance(array.getClass().getComponentType(), array.length);
     }
 
-    void sort() {
-        doSort(0, array.length - 1);
-    }
-
-    abstract void doSort(int from, int to);
+    abstract void sort();
 
     final void merge(final int from, final int middle, final int to, final int size) {
         System.arraycopy(array, from, aux, from, size);

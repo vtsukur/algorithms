@@ -7,6 +7,8 @@ import static org.vtsukur.algorithms.util.ComparableUtils.lessOrEqualTo;
  */
 public final class RecursiveMergeSort extends BaseSort {
 
+    private static final InsertionSort INSERTION = new InsertionSort();
+
     @Override
     public <T extends Comparable<T>> void sort(final T[] array) {
         new Worker<>(array).sort();
@@ -17,11 +19,15 @@ public final class RecursiveMergeSort extends BaseSort {
      */
     private final class Worker<T extends Comparable<T>> extends MergeSortWorker<T> {
 
-        Worker(T[] array) {
+        Worker(final T[] array) {
             super(array);
         }
 
         @Override
+        void sort() {
+            doSort(0, array.length - 1);
+        }
+
         void doSort(final int from, final int to) {
             final int size = to - from + 1;
             if (size <= 1) {
@@ -29,7 +35,7 @@ public final class RecursiveMergeSort extends BaseSort {
             }
 
             if (size <= 7) {
-                insertionSort.sort(array, from, to);
+                INSERTION.sort(array, from, to);
                 return;
             }
 
