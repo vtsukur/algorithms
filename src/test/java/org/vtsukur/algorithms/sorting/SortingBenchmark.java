@@ -24,15 +24,22 @@ import static java.lang.invoke.MethodHandles.lookup;
 @State(Scope.Benchmark)
 public class SortingBenchmark {
 
-    private static final int SIZE = 1_000_000;
+    private static final int SIZE = 524_288;
 
     private static final Random RANDOM = new Random();
 
     private static final RecursiveMergeSort RECURSIVE_MERGE_SORT = new RecursiveMergeSort();
 
+    private static final BottomUpMergeSort BOTTOM_UP_MERGE_SORT = new BottomUpMergeSort();
+
     @Benchmark
     public void benchmarkRecursiveMergeSort() {
         RECURSIVE_MERGE_SORT.sort(generateArrayOfNRandomItems());
+    }
+
+    @Benchmark
+    public void benchmarkBottomUpMergeSort() {
+        BOTTOM_UP_MERGE_SORT.sort(generateArrayOfNRandomItems());
     }
 
     @Benchmark
