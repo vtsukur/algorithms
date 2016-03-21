@@ -8,7 +8,7 @@ import java.lang.reflect.Array;
 /**
  * @author volodymyr.tsukur
  */
-public final class HeapBasedMaxPriorityQueue<K extends Comparable<K>> extends BaseMaxPriorityQueue<K> {
+public final class HeapOrderedMaxPriorityQueue<K extends Comparable<K>> extends BaseMaxPriorityQueue<K> {
 
     private static final int INITIAL_CAPACITY = 1;
 
@@ -16,7 +16,7 @@ public final class HeapBasedMaxPriorityQueue<K extends Comparable<K>> extends Ba
 
     private int cursor;
 
-    public HeapBasedMaxPriorityQueue() {
+    public HeapOrderedMaxPriorityQueue() {
         createInitialStore();
     }
 

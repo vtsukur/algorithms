@@ -8,7 +8,7 @@ import static org.vtsukur.algorithms.util.ComparableUtils.less;
 /**
  * @author volodymyr.tsukur
  */
-public final class UnorderedStoreBasedMaxPriorityQueue<K extends Comparable<K>> extends BaseMaxPriorityQueue<K> {
+public final class UnorderedArrayMaxPriorityQueue<K extends Comparable<K>> extends BaseMaxPriorityQueue<K> {
 
     private final List<K> store = new ArrayList<>();
 

@@ -25,8 +25,8 @@ public class MaxPriorityQueueTest {
     @Parameterized.Parameters(name = "{0}")
     public static Collection<Object[]> strategies() {
         return Arrays.asList(new Object[][]{
-                { new HeapBasedMaxPriorityQueue<>() },
-                { new UnorderedStoreBasedMaxPriorityQueue<>() },
+                { new HeapOrderedMaxPriorityQueue<>() },
+                { new UnorderedArrayMaxPriorityQueue<>() },
         });
     }
 
