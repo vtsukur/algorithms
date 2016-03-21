@@ -26,7 +26,7 @@ public class MaxPriorityQueueTest {
     public static Collection<Object[]> strategies() {
         return Arrays.asList(new Object[][]{
                 { new HeapBasedMaxPriorityQueue<>() },
-                { new UnorderedMaxPriorityQueue<>() },
+                { new UnorderedStoreBasedMaxPriorityQueue<>() },
         });
     }
 
