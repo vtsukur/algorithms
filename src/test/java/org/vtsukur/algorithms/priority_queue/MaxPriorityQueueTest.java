@@ -11,7 +11,7 @@ import static org.junit.Assert.assertTrue;
  */
 public class MaxPriorityQueueTest {
 
-    private final MaxPriorityQueue<Integer> queue = new MaxPriorityQueueImpl<>();
+    private final MaxPriorityQueue<Integer> queue = new HeapBasedMaxPriorityQueue<>();
 
     @Test
     public void add_poll_peek() {
