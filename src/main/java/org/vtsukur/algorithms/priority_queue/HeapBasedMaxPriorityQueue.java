@@ -72,15 +72,15 @@ public final class HeapBasedMaxPriorityQueue<K extends Comparable<K>> extends Ba
         }
     }
 
-    private void ensureEnoughCapacity(final int newCapacity) {
-        if (newCapacity == store.length) {
-            reallocateStore(newCapacity, store.length * 2);
+    private void ensureEnoughCapacity(final int required) {
+        if (required == store.length) {
+            reallocateStore(required, store.length * 2);
         }
     }
 
-    private void ensureCapacityNotOverused(final int newCapacity) {
-        if (newCapacity == store.length / 4) {
-            reallocateStore(newCapacity, store.length / 2);
+    private void ensureCapacityNotOverused(final int occupied) {
+        if (occupied == store.length / 4) {
+            reallocateStore(occupied, store.length / 2);
         }
     }
 
@@ -89,9 +89,9 @@ public final class HeapBasedMaxPriorityQueue<K extends Comparable<K>> extends Ba
         return (K[]) Array.newInstance(Comparable.class, capacity);
     }
 
-    private void reallocateStore(final int newCapacity, final int capacity) {
-        final K[] newStore = createStore(capacity);
-        System.arraycopy(store, 0, newStore, 0, newCapacity);
+    private void reallocateStore(final int occupied, final int newCapacity) {
+        final K[] newStore = createStore(newCapacity);
+        System.arraycopy(store, 0, newStore, 0, occupied);
         store = newStore;
     }
 
