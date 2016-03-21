@@ -22,7 +22,11 @@ public final class UnorderedMaxPriorityQueue<K extends Comparable<K>> extends Ba
         assertNotEmpty();
 
         final int maxIndex = findMaxIndex();
-        return store.remove(maxIndex);
+        final K max = store.get(maxIndex);
+        final int lastIndex = store.size() - 1;
+        store.set(maxIndex, store.get(lastIndex));
+        store.set(lastIndex, max);
+        return store.remove(lastIndex);
     }
 
     @Override
