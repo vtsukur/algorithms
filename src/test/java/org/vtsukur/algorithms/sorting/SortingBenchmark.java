@@ -32,6 +32,8 @@ public class SortingBenchmark {
 
     private static final BottomUpMergeSort BOTTOM_UP_MERGE_SORT = new BottomUpMergeSort();
 
+    private static final HeapSort HEAP_SORT = new HeapSort();
+
     @Benchmark
     public void benchmarkRecursiveMergeSort() {
         RECURSIVE_MERGE_SORT.sort(generateArrayOfNRandomItems());
@@ -40,6 +42,11 @@ public class SortingBenchmark {
     @Benchmark
     public void benchmarkBottomUpMergeSort() {
         BOTTOM_UP_MERGE_SORT.sort(generateArrayOfNRandomItems());
+    }
+
+    @Benchmark
+    public void benchmarkHeapSort() {
+        HEAP_SORT.sort(generateArrayOfNRandomItems());
     }
 
     @Benchmark
