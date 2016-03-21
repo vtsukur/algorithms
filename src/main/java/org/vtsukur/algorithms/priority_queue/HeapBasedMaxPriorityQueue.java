@@ -32,7 +32,7 @@ public final class HeapBasedMaxPriorityQueue<K extends Comparable<K>> extends Ba
 
     @Override
     public void add(final K key) {
-        ensureCapacity(cursor + 1);
+        ensureEnoughCapacity(cursor + 1);
         store[cursor] = key;
         heapify(cursor);
         cursor++;
@@ -64,6 +64,7 @@ public final class HeapBasedMaxPriorityQueue<K extends Comparable<K>> extends Ba
         }
 
         cursor--;
+        ensureCapacityNotOverused(cursor);
 
         return max;
     }
@@ -84,12 +85,22 @@ public final class HeapBasedMaxPriorityQueue<K extends Comparable<K>> extends Ba
         return (index + 1) << 1;
     }
 
-    private void ensureCapacity(final int newCapacity) {
+    private void ensureEnoughCapacity(final int newCapacity) {
         if (newCapacity == store.length) {
-            final K[] newStore = createStore(store.length * 2);
-            System.arraycopy(store, 0, newStore, 0, store.length);
-            store = newStore;
+            reallocateStore(newCapacity, store.length * 2);
         }
+    }
+
+    private void ensureCapacityNotOverused(final int newCapacity) {
+        if (newCapacity == store.length / 4) {
+            reallocateStore(newCapacity, store.length / 2);
+        }
+    }
+
+    private void reallocateStore(final int newCapacity, final int capacity) {
+        final K[] newStore = createStore(capacity);
+        System.arraycopy(store, 0, newStore, 0, newCapacity);
+        store = newStore;
     }
 
     private boolean hasParent(final int index) {

@@ -57,6 +57,10 @@ public class MaxPriorityQueueTest {
 
         queue.add(0);
         assertEquals(queue.peekMax(), Integer.valueOf(10));
+
+        assertEquals(queue.pollMax(), Integer.valueOf(10));
+        assertEquals(queue.pollMax(), Integer.valueOf(1));
+        assertEquals(queue.pollMax(), Integer.valueOf(0));
     }
 
     @Test
