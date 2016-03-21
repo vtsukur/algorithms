@@ -7,6 +7,8 @@ public interface MaxPriorityQueue<K extends Comparable<K>> {
 
     void add(K key);
 
+    K pollMax();
+
     K peekMax();
 
     boolean isEmpty();

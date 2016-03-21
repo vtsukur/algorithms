@@ -32,24 +32,40 @@ public class MaxPriorityQueueTest {
         assertEquals(queue.size(), 3);
         assertEquals(queue.peekMax(), Integer.valueOf(5));
 
-//        assertEquals(queue.pollMax(), Integer.valueOf(5));
-//        assertEquals(queue.peekMax(), Integer.valueOf(3));
-//
-//        assertEquals(queue.pollMax(), Integer.valueOf(3));
-//        assertEquals(queue.peekMax(), Integer.valueOf(1));
-//
-//        queue.add(10);
-//        assertEquals(queue.peekMax(), Integer.valueOf(10));
-//
-//        queue.add(0);
-//        assertEquals(queue.peekMax(), Integer.valueOf(10));
-//
-//        queue.add(-1);
-//        assertEquals(queue.peekMax(), Integer.valueOf(10));
-//
-//        assertEquals(queue.pollMax(), Integer.valueOf(10));
-//        assertEquals(queue.peekMax(), Integer.valueOf(1));
-//        assertEquals(queue.pollMax(), Integer.valueOf(1));
+        assertEquals(queue.pollMax(), Integer.valueOf(5));
+        assertFalse(queue.isEmpty());
+        assertEquals(queue.size(), 2);
+        assertEquals(queue.peekMax(), Integer.valueOf(3));
+
+        assertEquals(queue.pollMax(), Integer.valueOf(3));
+        assertFalse(queue.isEmpty());
+        assertEquals(queue.size(), 1);
+        assertEquals(queue.peekMax(), Integer.valueOf(1));
+
+        queue.add(10);
+        assertFalse(queue.isEmpty());
+        assertEquals(queue.size(), 2);
+        assertEquals(queue.peekMax(), Integer.valueOf(10));
+
+        queue.add(0);
+        assertFalse(queue.isEmpty());
+        assertEquals(queue.size(), 3);
+        assertEquals(queue.peekMax(), Integer.valueOf(10));
+
+        queue.add(-1);
+        assertFalse(queue.isEmpty());
+        assertEquals(queue.size(), 4);
+        assertEquals(queue.peekMax(), Integer.valueOf(10));
+
+        assertEquals(queue.pollMax(), Integer.valueOf(10));
+        assertFalse(queue.isEmpty());
+        assertEquals(queue.size(), 3);
+        assertEquals(queue.peekMax(), Integer.valueOf(1));
+
+        assertEquals(queue.pollMax(), Integer.valueOf(1));
+        assertFalse(queue.isEmpty());
+        assertEquals(queue.size(), 2);
+        assertEquals(queue.peekMax(), Integer.valueOf(0));
     }
 
 }

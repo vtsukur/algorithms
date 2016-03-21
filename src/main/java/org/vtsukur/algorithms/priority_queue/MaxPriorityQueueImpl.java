@@ -30,12 +30,53 @@ public final class MaxPriorityQueueImpl<K extends Comparable<K>> implements MaxP
     public void add(final K key) {
         ensureCapacity(cursor + 1);
         store[cursor] = key;
-        int index = cursor;
-        while (hasParent(index) && less(store[parent(index)], store[index])) {
-            swap(store, parent(index), index);
-            index = parent(index);
-        }
+        heapify(cursor);
         cursor++;
+    }
+
+    @Override
+    public K pollMax() {
+        final K max = peekMax();
+
+        int index = 0;
+        int leftChildIndex = leftChildIndex(index);
+        while (leftChildIndex < cursor) {
+            final int rightChildIndex = rightChildIndex(index);
+            final int nextIndex;
+            if (rightChildIndex < cursor) {
+                nextIndex = less(store[leftChildIndex], store[rightChildIndex])
+                        ? rightChildIndex : leftChildIndex;
+            } else {
+                nextIndex = leftChildIndex;
+            }
+            swap(store, index, nextIndex);
+            index = nextIndex;
+            leftChildIndex = leftChildIndex(index);
+        }
+        if (index < cursor - 1) {
+            store[index] = store[cursor - 1];
+            heapify(index);
+        }
+
+        cursor--;
+
+        return max;
+    }
+
+    private void heapify(final int index) {
+        int i = index;
+        while (hasParent(i) && less(store[parent(i)], store[i])) {
+            swap(store, parent(i), i);
+            i = parent(i);
+        }
+    }
+
+    private int leftChildIndex(final int index) {
+        return (index << 1) + 1;
+    }
+
+    private int rightChildIndex(final int index) {
+        return (index + 1) << 1;
     }
 
     private void ensureCapacity(final int newCapacity) {
