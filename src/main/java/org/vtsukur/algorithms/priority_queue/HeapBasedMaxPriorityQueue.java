@@ -1,9 +1,9 @@
 package org.vtsukur.algorithms.priority_queue;
 
-import java.lang.reflect.Array;
+import org.vtsukur.algorithms.util.ArrayUtils;
+import org.vtsukur.algorithms.util.ComparableUtils;
 
-import static org.vtsukur.algorithms.util.ArrayUtils.swap;
-import static org.vtsukur.algorithms.util.ComparableUtils.less;
+import java.lang.reflect.Array;
 
 /**
  * @author volodymyr.tsukur
@@ -34,7 +34,7 @@ public final class HeapBasedMaxPriorityQueue<K extends Comparable<K>> extends Ba
     public void add(final K key) {
         ensureEnoughCapacity(cursor + 1);
         store[cursor] = key;
-        heapify(cursor);
+        swim(cursor);
         cursor++;
     }
 
@@ -49,18 +49,18 @@ public final class HeapBasedMaxPriorityQueue<K extends Comparable<K>> extends Ba
             final int rightChildIndex = rightChildIndex(index);
             final int nextIndex;
             if (rightChildIndex < cursor) {
-                nextIndex = less(store[leftChildIndex], store[rightChildIndex])
+                nextIndex = less(leftChildIndex, rightChildIndex)
                         ? rightChildIndex : leftChildIndex;
             } else {
                 nextIndex = leftChildIndex;
             }
-            swap(store, index, nextIndex);
+            swap(index, nextIndex);
             index = nextIndex;
             leftChildIndex = leftChildIndex(index);
         }
         if (index < cursor - 1) {
             store[index] = store[cursor - 1];
-            heapify(index);
+            swim(index);
         }
 
         cursor--;
@@ -69,10 +69,10 @@ public final class HeapBasedMaxPriorityQueue<K extends Comparable<K>> extends Ba
         return max;
     }
 
-    private void heapify(final int index) {
+    private void swim(final int index) {
         int i = index;
-        while (hasParent(i) && less(store[parent(i)], store[i])) {
-            swap(store, parent(i), i);
+        while (hasParent(i) && less(parent(i), i)) {
+            swap(parent(i), i);
             i = parent(i);
         }
     }
@@ -109,6 +109,14 @@ public final class HeapBasedMaxPriorityQueue<K extends Comparable<K>> extends Ba
 
     private int parent(final int index) {
         return (index - 1) / 2;
+    }
+
+    private boolean less(final int i, final int j) {
+        return ComparableUtils.less(store[i], store[j]);
+    }
+
+    private void swap(final int i, final int j) {
+        ArrayUtils.swap(store, i, j);
     }
 
     @Override
