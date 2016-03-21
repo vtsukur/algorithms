@@ -58,21 +58,25 @@ public final class HeapOrderedMaxPriorityQueue<K extends Comparable<K>> extends 
     }
 
     private void sink(final int index) {
+        sink(store, cursor, index);
+    }
+
+    public static <K extends Comparable<K>> void sink(final K[] array, final int length, final int index) {
         int i = index;
         int leftChildIndex = leftChildIndex(i);
-        while (leftChildIndex < cursor) {
-            final int rightChildIndex = rightChildIndex(index);
+        while (leftChildIndex < length) {
+            final int rightChildIndex = rightChildIndex(i);
             final int greaterChildIndex;
-            if (rightChildIndex < cursor) {
-                greaterChildIndex = less(leftChildIndex, rightChildIndex)
+            if (rightChildIndex < length) {
+                greaterChildIndex = less(array, leftChildIndex, rightChildIndex)
                         ? rightChildIndex : leftChildIndex;
             } else {
                 greaterChildIndex = leftChildIndex;
             }
-            if (less(greaterChildIndex, i)) {
+            if (less(array, greaterChildIndex, i)) {
                 break;
             }
-            swap(index, greaterChildIndex);
+            ArrayUtils.swap(array, i, greaterChildIndex);
             i = greaterChildIndex;
             leftChildIndex = leftChildIndex(i);
         }
@@ -103,6 +107,10 @@ public final class HeapOrderedMaxPriorityQueue<K extends Comparable<K>> extends 
 
     private boolean less(final int i, final int j) {
         return ComparableUtils.less(store[i], store[j]);
+    }
+
+    private static <K extends Comparable<K>> boolean less(final K[] array, final int i, final int j) {
+        return ComparableUtils.less(array[i], array[j]);
     }
 
     private void swap(final int i, final int j) {
@@ -144,6 +152,17 @@ public final class HeapOrderedMaxPriorityQueue<K extends Comparable<K>> extends 
     @Override
     public void clear() {
         createInitialStore();
+    }
+
+    public static <K extends Comparable<K>> void heapify(final K[] array) {
+        if (array.length == 0) {
+            return;
+        }
+
+        for (int i = (array.length - 1) / 2; i >= 0; --i) {
+            sink(array, array.length, i);
+        }
+
     }
 
 }

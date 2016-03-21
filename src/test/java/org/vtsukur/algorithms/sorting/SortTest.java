@@ -34,7 +34,8 @@ public class SortTest {
                 { new RecursiveMergeSort() },
                 { new BottomUpMergeSort() },
                 { new QuickSortOneWaySearchPartitioning() },
-                { new QuickSortTwoWaySearchPartitioning() }
+                { new QuickSortTwoWaySearchPartitioning() },
+                { new HeapSort() }
         });
     }
 
