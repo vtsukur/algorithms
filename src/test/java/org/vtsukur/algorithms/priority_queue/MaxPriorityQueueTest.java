@@ -1,17 +1,38 @@
 package org.vtsukur.algorithms.priority_queue;
 
+import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import java.util.Arrays;
+import java.util.Collection;
+
+import static org.junit.Assert.*;
 
 /**
  * @author volodymyr.tsukur
  */
+@RunWith(Parameterized.class)
 public class MaxPriorityQueueTest {
 
-    private final MaxPriorityQueue<Integer> queue = new HeapBasedMaxPriorityQueue<>();
+    private final MaxPriorityQueue<Integer> queue;
+
+    public MaxPriorityQueueTest(final MaxPriorityQueue<Integer> queue) {
+        this.queue = queue;
+    }
+
+    @Parameterized.Parameters(name = "{0}")
+    public static Collection<Object[]> strategies() {
+        return Arrays.asList(new Object[][]{
+                { new HeapBasedMaxMaxPriorityQueue<>() }
+        });
+    }
+
+    @Before
+    public void clear() {
+        queue.clear();
+    }
 
     @Test
     public void add_poll_peek() {

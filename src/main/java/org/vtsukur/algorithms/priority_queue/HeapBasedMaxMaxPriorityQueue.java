@@ -9,7 +9,7 @@ import static org.vtsukur.algorithms.util.ComparableUtils.less;
 /**
  * @author volodymyr.tsukur
  */
-public final class HeapBasedMaxPriorityQueue<K extends Comparable<K>> implements MaxPriorityQueue<K> {
+public final class HeapBasedMaxMaxPriorityQueue<K extends Comparable<K>> extends BaseMaxPriorityQueue<K> {
 
     private static final int INITIAL_CAPACITY = 1;
 
@@ -17,8 +17,13 @@ public final class HeapBasedMaxPriorityQueue<K extends Comparable<K>> implements
 
     private int cursor;
 
-    public HeapBasedMaxPriorityQueue() {
+    public HeapBasedMaxMaxPriorityQueue() {
+        createInitialStore();
+    }
+
+    private void createInitialStore() {
         store = createStore(INITIAL_CAPACITY);
+        cursor = 0;
     }
 
     private K[] createStore(final int capacity) {
@@ -110,6 +115,11 @@ public final class HeapBasedMaxPriorityQueue<K extends Comparable<K>> implements
     @Override
     public int size() {
         return cursor;
+    }
+
+    @Override
+    public void clear() {
+        createInitialStore();
     }
 
     private void assertNotEmpty() {

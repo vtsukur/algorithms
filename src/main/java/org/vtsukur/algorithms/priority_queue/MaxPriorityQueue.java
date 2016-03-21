@@ -15,4 +15,6 @@ public interface MaxPriorityQueue<K extends Comparable<K>> {
 
     int size();
 
+    void clear();
+
 }
