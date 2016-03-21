@@ -25,11 +25,6 @@ public final class HeapBasedMaxPriorityQueue<K extends Comparable<K>> extends Ba
         cursor = 0;
     }
 
-    private K[] createStore(final int capacity) {
-        //noinspection unchecked
-        return (K[]) Array.newInstance(Comparable.class, capacity);
-    }
-
     @Override
     public void add(final K key) {
         ensureEnoughCapacity(cursor + 1);
@@ -77,14 +72,6 @@ public final class HeapBasedMaxPriorityQueue<K extends Comparable<K>> extends Ba
         }
     }
 
-    private int leftChildIndex(final int index) {
-        return (index << 1) + 1;
-    }
-
-    private int rightChildIndex(final int index) {
-        return (index + 1) << 1;
-    }
-
     private void ensureEnoughCapacity(final int newCapacity) {
         if (newCapacity == store.length) {
             reallocateStore(newCapacity, store.length * 2);
@@ -97,18 +84,15 @@ public final class HeapBasedMaxPriorityQueue<K extends Comparable<K>> extends Ba
         }
     }
 
+    private K[] createStore(final int capacity) {
+        //noinspection unchecked
+        return (K[]) Array.newInstance(Comparable.class, capacity);
+    }
+
     private void reallocateStore(final int newCapacity, final int capacity) {
         final K[] newStore = createStore(capacity);
         System.arraycopy(store, 0, newStore, 0, newCapacity);
         store = newStore;
-    }
-
-    private boolean hasParent(final int index) {
-        return index != 0;
-    }
-
-    private int parent(final int index) {
-        return (index - 1) / 2;
     }
 
     private boolean less(final int i, final int j) {
@@ -117,6 +101,22 @@ public final class HeapBasedMaxPriorityQueue<K extends Comparable<K>> extends Ba
 
     private void swap(final int i, final int j) {
         ArrayUtils.swap(store, i, j);
+    }
+
+    private static boolean hasParent(final int index) {
+        return index != 0;
+    }
+
+    private static int leftChildIndex(final int index) {
+        return (index << 1) + 1;
+    }
+
+    private static int rightChildIndex(final int index) {
+        return (index + 1) << 1;
+    }
+
+    private static int parent(final int index) {
+        return (index - 1) / 2;
     }
 
     @Override
