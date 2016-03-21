@@ -60,6 +60,11 @@ public final class MaxPriorityQueueImpl<K extends Comparable<K>> implements MaxP
         return cursor == 0;
     }
 
+    @Override
+    public int size() {
+        return cursor;
+    }
+
     private void assertNotEmpty() {
         if (isEmpty()) {
             throw new NoSuchElementException("priority queue is empty");

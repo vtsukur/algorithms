@@ -11,4 +11,6 @@ public interface MaxPriorityQueue<K extends Comparable<K>> {
 
     boolean isEmpty();
 
+    int size();
+
 }
