@@ -38,6 +38,7 @@ public final class MaxPriorityQueueImpl<K extends Comparable<K>> implements MaxP
     public K pollMax() {
         final K max = peekMax();
 
+        store[0] = null;
         int index = 0;
         int leftChildIndex = leftChildIndex(index);
         while (leftChildIndex < cursor) {
