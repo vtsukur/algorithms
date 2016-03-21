@@ -37,28 +37,12 @@ public final class HeapOrderedMaxPriorityQueue<K extends Comparable<K>> extends 
     public K pollMax() {
         final K max = peekMax();
 
-        store[0] = null;
-        int index = 0;
-        int leftChildIndex = leftChildIndex(index);
-        while (leftChildIndex < cursor) {
-            final int rightChildIndex = rightChildIndex(index);
-            final int nextIndex;
-            if (rightChildIndex < cursor) {
-                nextIndex = less(leftChildIndex, rightChildIndex)
-                        ? rightChildIndex : leftChildIndex;
-            } else {
-                nextIndex = leftChildIndex;
-            }
-            swap(index, nextIndex);
-            index = nextIndex;
-            leftChildIndex = leftChildIndex(index);
-        }
-        if (index < cursor - 1) {
-            store[index] = store[cursor - 1];
-            swim(index);
-        }
+        final int lastElementIndex = cursor - 1;
+        store[0] = store[lastElementIndex];
+        store[lastElementIndex] = null;
 
-        cursor--;
+        --cursor;
+        sink(0);
         ensureCapacityNotOverused(cursor);
 
         return max;
@@ -70,6 +54,27 @@ public final class HeapOrderedMaxPriorityQueue<K extends Comparable<K>> extends 
         while (hasParent(i) && less(parent = parentIndex(i), i)) {
             swap(parent, i);
             i = parent;
+        }
+    }
+
+    private void sink(final int index) {
+        int i = index;
+        int leftChildIndex = leftChildIndex(i);
+        while (leftChildIndex < cursor) {
+            final int rightChildIndex = rightChildIndex(index);
+            final int greaterChildIndex;
+            if (rightChildIndex < cursor) {
+                greaterChildIndex = less(leftChildIndex, rightChildIndex)
+                        ? rightChildIndex : leftChildIndex;
+            } else {
+                greaterChildIndex = leftChildIndex;
+            }
+            if (less(greaterChildIndex, i)) {
+                break;
+            }
+            swap(index, greaterChildIndex);
+            i = greaterChildIndex;
+            leftChildIndex = leftChildIndex(i);
         }
     }
 
