@@ -11,26 +11,35 @@ import static org.vtsukur.algorithms.util.ComparableUtils.less;
  */
 public final class MaxPriorityQueueImpl<K extends Comparable<K>> implements MaxPriorityQueue<K> {
 
-    private static final int INITIAL_CAPACITY = 8;
+    private static final int INITIAL_CAPACITY = 1;
 
     private K[] store;
 
     private int cursor;
 
     public MaxPriorityQueueImpl() {
-        initializeStore(INITIAL_CAPACITY);
+        store = createStore(INITIAL_CAPACITY);
     }
 
-    private void initializeStore(final int capacity) {
+    private K[] createStore(final int capacity) {
         //noinspection unchecked
-        store = (K[]) Array.newInstance(Comparable.class, capacity);
+        return (K[]) Array.newInstance(Comparable.class, capacity);
     }
 
     @Override
     public void add(final K key) {
+        ensureCapacity(cursor + 1);
         store[cursor] = key;
         heapify(cursor);
         cursor++;
+    }
+
+    private void ensureCapacity(final int newCapacity) {
+        if (newCapacity == store.length) {
+            final K[] newStore = createStore(store.length * 2);
+            System.arraycopy(store, 0, newStore, 0, store.length);
+            store = newStore;
+        }
     }
 
     private void heapify(final int initialIndex) {
