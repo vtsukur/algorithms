@@ -1,7 +1,6 @@
 package org.vtsukur.algorithms.priority_queue;
 
 import java.lang.reflect.Array;
-import java.util.NoSuchElementException;
 
 import static org.vtsukur.algorithms.util.ArrayUtils.swap;
 import static org.vtsukur.algorithms.util.ComparableUtils.less;
@@ -120,12 +119,6 @@ public final class HeapBasedMaxMaxPriorityQueue<K extends Comparable<K>> extends
     @Override
     public void clear() {
         createInitialStore();
-    }
-
-    private void assertNotEmpty() {
-        if (isEmpty()) {
-            throw new NoSuchElementException("priority queue is empty");
-        }
     }
 
 }
