@@ -66,9 +66,10 @@ public final class HeapOrderedMaxPriorityQueue<K extends Comparable<K>> extends 
 
     private void swim(final int index) {
         int i = index;
-        while (hasParent(i) && less(parent(i), i)) {
-            swap(parent(i), i);
-            i = parent(i);
+        int parent;
+        while (hasParent(i) && less(parent = parent(i), i)) {
+            swap(parent, i);
+            i = parent;
         }
     }
 
