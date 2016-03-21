@@ -30,7 +30,11 @@ public final class MaxPriorityQueueImpl<K extends Comparable<K>> implements MaxP
     public void add(final K key) {
         ensureCapacity(cursor + 1);
         store[cursor] = key;
-        heapify(cursor);
+        int index = cursor;
+        while (hasParent(index) && less(store[parent(index)], store[index])) {
+            swap(store, parent(index), index);
+            index = parent(index);
+        }
         cursor++;
     }
 
@@ -39,14 +43,6 @@ public final class MaxPriorityQueueImpl<K extends Comparable<K>> implements MaxP
             final K[] newStore = createStore(store.length * 2);
             System.arraycopy(store, 0, newStore, 0, store.length);
             store = newStore;
-        }
-    }
-
-    private void heapify(final int initialIndex) {
-        int index = initialIndex;
-        while (hasParent(index) && less(store[parent(index)], store[index])) {
-            swap(store, parent(index), index);
-            index = parent(index);
         }
     }
 
