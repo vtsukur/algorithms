@@ -88,22 +88,26 @@ public final class OrderedArraySymbolTable<K extends Comparable<K>, V> extends B
             return -1;
         }
 
+        int index = -1;
+
         int lo = 0;
         int hi = size - 1;
 
-        while (lo > hi) {
-            int m = (hi + lo) / 2;
+        while (lo <= hi) {
+            int m = lo + (hi + lo) / 2;
+
             final int comparison = key.compareTo(keys[m]);
             if (comparison < 0) {
                 hi = m - 1;
             } else if (comparison > 0) {
                 lo = m + 1;
             } else {
-                return m;
+                index = m;
+                break;
             }
         }
 
-        return key.compareTo(keys[hi]) == 0 ? lo : -1;
+        return index;
     }
 
     @Override
