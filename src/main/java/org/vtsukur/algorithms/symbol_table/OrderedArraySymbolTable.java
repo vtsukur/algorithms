@@ -23,19 +23,19 @@ public final class OrderedArraySymbolTable<K extends Comparable<K>, V> extends B
 
         final int index = binarySearch(key);
         if (value != null) {
-            updateOrInsert(index, key, value);
+            updateOrInsert(key, index, value);
         } else {
-            doDelete(index);
+            doDelete(key, index);
         }
     }
 
-    private void updateOrInsert(final int index, final K key, final V value) {
-        if (index != -1) {
+    private void updateOrInsert(final K key, final int index, final V value) {
+        if (isKeyFound(key, index)) {
             values[index] = value;
         } else {
             ensureCapacity();
 
-            int k = 0;
+            int k = index;
             while (k < size && key.compareTo(keys[k]) > 0) {
                 ++k;
             }
@@ -51,8 +51,8 @@ public final class OrderedArraySymbolTable<K extends Comparable<K>, V> extends B
         }
     }
 
-    private void doDelete(final int index) {
-        if (index != -1) {
+    private void doDelete(final K key, final int index) {
+        if (isKeyFound(key, index)) {
             final int last = size - 1;
             for (int i = index; i < last; ++i) {
                 keys[i] = keys[i + 1];
@@ -79,12 +79,14 @@ public final class OrderedArraySymbolTable<K extends Comparable<K>, V> extends B
         }
     }
 
+    private boolean isKeyFound(final K key, final int index) {
+        return index < size && key.compareTo(keys[index]) == 0;
+    }
+
     private int binarySearch(final K key) {
         if (isEmpty()) {
-            return -1;
+            return 0;
         }
-
-        int index = -1;
 
         int lo = 0;
         int hi = size - 1;
@@ -98,12 +100,11 @@ public final class OrderedArraySymbolTable<K extends Comparable<K>, V> extends B
             } else if (comparison > 0) {
                 lo = m + 1;
             } else {
-                index = m;
-                break;
+                return m;
             }
         }
 
-        return index;
+        return Math.min(lo, hi);
     }
 
     @Override
