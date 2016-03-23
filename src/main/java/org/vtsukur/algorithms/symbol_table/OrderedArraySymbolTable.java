@@ -64,8 +64,8 @@ public final class OrderedArraySymbolTable<K extends Comparable<K>, V> extends B
                 keys[i] = keys[i + 1];
                 values[i] = values[i + 1];
             }
-            keys[(last)] = null;
-            values[(last)] = null;
+            keys[last] = null;
+            values[last] = null;
 
             --size;
         }
@@ -91,19 +91,19 @@ public final class OrderedArraySymbolTable<K extends Comparable<K>, V> extends B
         int lo = 0;
         int hi = size - 1;
 
-        while (lo != hi) {
+        while (lo > hi) {
             int m = (hi + lo) / 2;
             final int comparison = key.compareTo(keys[m]);
             if (comparison < 0) {
-                hi = m;
+                hi = m - 1;
             } else if (comparison > 0) {
-                lo = m;
+                lo = m + 1;
             } else {
                 return m;
             }
         }
 
-        return keys[lo].compareTo(keys[hi]) == 0 ? lo : -1;
+        return key.compareTo(keys[hi]) == 0 ? lo : -1;
     }
 
     @Override
