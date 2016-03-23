@@ -27,7 +27,7 @@ public class ComparableBasedSymbolTableTest {
     @Parameterized.Parameters(name = "{0}")
     public static Collection<Object[]> strategies() {
         return Arrays.asList(new Object[][]{
-                { new SingleLinkedListComparableBasedSymbolTable() }
+                { new SinglyLinkedListComparableBasedSymbolTable() }
         });
     }
 

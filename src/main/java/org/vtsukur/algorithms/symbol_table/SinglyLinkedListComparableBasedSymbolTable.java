@@ -5,7 +5,7 @@ import org.apache.commons.lang3.tuple.Pair;
 /**
  * @author volodymyr.tsukur
  */
-public final class SingleLinkedListComparableBasedSymbolTable<K extends Comparable<K>, V> extends BaseComparableBasedSymbolTable<K, V> {
+public final class SinglyLinkedListComparableBasedSymbolTable<K extends Comparable<K>, V> extends BaseComparableBasedSymbolTable<K, V> {
 
     private Node<K, V> head;
 
