@@ -38,7 +38,7 @@ public final class Heap<T extends Comparable<T>> {
         }
     }
 
-    private Object[] newArray(int i) {
+    private Object[] newArray(final int i) {
         return new Object[(i / CAPACITY_EXTENSION_BUFFER + 1) * CAPACITY_EXTENSION_BUFFER];
     }
 
