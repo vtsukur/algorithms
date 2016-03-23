@@ -62,6 +62,8 @@ public final class OrderedArraySymbolTable<K extends Comparable<K>, V> extends B
             values[last] = null;
 
             --size;
+
+            shrinkToAvoidAbuse();
         }
     }
 
@@ -125,6 +127,12 @@ public final class OrderedArraySymbolTable<K extends Comparable<K>, V> extends B
     private void ensureCapacity() {
         if (keys.length == size) {
             reallocateStores(size * 2);
+        }
+    }
+
+    private void shrinkToAvoidAbuse() {
+        if (keys.length == size / 4) {
+            reallocateStores(size / 2);
         }
     }
 
