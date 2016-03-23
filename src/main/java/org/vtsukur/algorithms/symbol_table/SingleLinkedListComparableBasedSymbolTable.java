@@ -83,11 +83,6 @@ public final class SingleLinkedListComparableBasedSymbolTable<K extends Comparab
     }
 
     @Override
-    public Iterable<K> keys() {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
     public void clear() {
         // no GC optimizations here ;)
         head = null;

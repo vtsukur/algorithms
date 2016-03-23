@@ -52,12 +52,14 @@ public class ComparableBasedSymbolTableTest {
 
         strategy.put("is", null);
         assertEquals(strategy.get("is"), null);
+        assertFalse(strategy.contains("is"));
 
-        strategy.put("is", 1);
-        assertEquals(strategy.get("is"), Integer.valueOf(1));
+        strategy.put("truly", 2);
+        assertEquals(strategy.get("truly"), Integer.valueOf(2));
 
-        strategy.delete("is");
-        assertEquals(strategy.get("is"), null);
+        strategy.delete("truly");
+        assertEquals(strategy.get("truly"), null);
+        assertFalse(strategy.contains("truly"));
     }
 
     @Test
