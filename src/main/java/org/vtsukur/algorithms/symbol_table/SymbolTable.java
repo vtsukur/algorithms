@@ -3,7 +3,7 @@ package org.vtsukur.algorithms.symbol_table;
 /**
  * @author volodymyr.tsukur
  */
-public interface ComparableBasedSymbolTable<K extends Comparable<K>, V> {
+public interface SymbolTable<K, V> {
 
     void put(K key, V value);
 

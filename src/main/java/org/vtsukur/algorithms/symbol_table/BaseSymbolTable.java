@@ -7,7 +7,7 @@ import java.util.Objects;
 /**
  * @author volodymyr.tsukur
  */
-abstract class BaseComparableBasedSymbolTable<K extends Comparable<K>, V> implements ComparableBasedSymbolTable<K, V> {
+abstract class BaseSymbolTable<K, V> implements SymbolTable<K, V> {
 
     @Override
     public final boolean contains(final K key) {

@@ -5,7 +5,7 @@ import org.apache.commons.lang3.tuple.Pair;
 /**
  * @author volodymyr.tsukur
  */
-public final class SinglyLinkedListComparableBasedSymbolTable<K extends Comparable<K>, V> extends BaseComparableBasedSymbolTable<K, V> {
+public final class SinglyLinkedListSymbolTable<K, V> extends BaseSymbolTable<K, V> {
 
     private Node<K, V> head;
 
@@ -66,7 +66,7 @@ public final class SinglyLinkedListComparableBasedSymbolTable<K extends Comparab
 
         Node<K, V> i = head;
         while (i != null) {
-            if (i.key.compareTo(key) == 0) {
+            if (i.key.equals(key)) {
                 found = i;
                 break;
             }
@@ -92,7 +92,7 @@ public final class SinglyLinkedListComparableBasedSymbolTable<K extends Comparab
     /**
      * @author volodymyr.tsukur
      */
-    private static class Node<K extends Comparable<K>, V> {
+    private static class Node<K, V> {
 
         final K key;
 

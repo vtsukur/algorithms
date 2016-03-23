@@ -16,18 +16,18 @@ import static org.junit.Assert.assertTrue;
  * @author volodymyr.tsukur
  */
 @RunWith(Parameterized.class)
-public class ComparableBasedSymbolTableTest {
+public class SymbolTableTest {
 
-    private final ComparableBasedSymbolTable<String, Integer> strategy;
+    private final SymbolTable<String, Integer> strategy;
 
-    public ComparableBasedSymbolTableTest(final ComparableBasedSymbolTable<String, Integer> strategy) {
+    public SymbolTableTest(final SymbolTable<String, Integer> strategy) {
         this.strategy = strategy;
     }
 
     @Parameterized.Parameters(name = "{0}")
     public static Collection<Object[]> strategies() {
         return Arrays.asList(new Object[][]{
-                { new SinglyLinkedListComparableBasedSymbolTable() }
+                { new SinglyLinkedListSymbolTable() }
         });
     }
 
