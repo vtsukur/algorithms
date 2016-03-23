@@ -19,4 +19,6 @@ public interface ComparableBasedSymbolTable<K extends Comparable<K>, V> {
 
     Iterable<K> keys();
 
+    void clear();
+
 }

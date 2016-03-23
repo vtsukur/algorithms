@@ -39,7 +39,9 @@ public final class SingleLinkedListComparableBasedSymbolTable<K extends Comparab
         final Node<K, V> target = targetAndPrev.getLeft();
         if (target != null) {
             final Node<K, V> prev = targetAndPrev.getRight();
-            prev.next = target.next;
+            if (prev != null) {
+                prev.next = target.next;
+            }
 
             target.value = null;
             target.next = null;
@@ -83,6 +85,13 @@ public final class SingleLinkedListComparableBasedSymbolTable<K extends Comparab
     @Override
     public Iterable<K> keys() {
         throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public void clear() {
+        // no GC optimizations here ;)
+        head = null;
+        size = 0;
     }
 
     /**
