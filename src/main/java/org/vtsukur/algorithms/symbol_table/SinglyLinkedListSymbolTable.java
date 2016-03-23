@@ -23,6 +23,12 @@ public final class SinglyLinkedListSymbolTable<K, V> extends BaseSymbolTable<K, 
     }
 
     private void findAndUpdateOrInsert(final K key, final V value) {
+        assertKey(key);
+
+        if (isEmpty()) {
+            return;
+        }
+
         final Node<K, V> target = find(key);
         if (target != null) {
             target.value = value;
