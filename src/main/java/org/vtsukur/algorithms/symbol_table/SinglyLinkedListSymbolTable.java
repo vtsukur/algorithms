@@ -15,10 +15,10 @@ public final class SinglyLinkedListSymbolTable<K, V> extends BaseSymbolTable<K, 
     public void put(final K key, final V value) {
         assertKey(key);
 
-        if (value == null) {
-            findAndDelete(key);
-        } else {
+        if (value != null) {
             findAndUpdateOrInsert(key, value);
+        } else {
+            findAndDelete(key);
         }
     }
 
