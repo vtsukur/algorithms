@@ -64,6 +64,23 @@ public class SymbolTableTest {
     }
 
     @Test
+    public void put_several_keys_and_then_drain() {
+        strategy.put("good", 1);
+        strategy.put("programmer", 2);
+        strategy.put("seeks", 3);
+        strategy.put("understanding", 4);
+        strategy.put("right?", 5);
+        assertEquals(strategy.size(), 5);
+
+        strategy.delete("good");
+        strategy.delete("programmer");
+        strategy.delete("seeks");
+        strategy.delete("understanding");
+        strategy.delete("right?");
+        assertTrue(strategy.isEmpty());
+    }
+
+    @Test
     public void empty_case() {
         assertTrue(strategy.isEmpty());
         assertEquals(strategy.size(), 0);
