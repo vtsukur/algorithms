@@ -51,12 +51,6 @@ public final class OrderedArraySymbolTable<K extends Comparable<K>, V> extends B
         }
     }
 
-    private void ensureCapacity() {
-        if (keys.length == size) {
-            reallocateStores(size * 2);
-        }
-    }
-
     private void doDelete(final int index) {
         if (index != -1) {
             final int last = size - 1;
@@ -126,6 +120,12 @@ public final class OrderedArraySymbolTable<K extends Comparable<K>, V> extends B
         keys = (K[]) new Comparable[1];
         //noinspection unchecked
         values = (V[]) new Object[1];
+    }
+
+    private void ensureCapacity() {
+        if (keys.length == size) {
+            reallocateStores(size * 2);
+        }
     }
 
     private void reallocateStores(final int size) {
