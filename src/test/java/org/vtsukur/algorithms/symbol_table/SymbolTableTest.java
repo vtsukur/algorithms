@@ -27,7 +27,7 @@ public class SymbolTableTest {
     @Parameterized.Parameters(name = "{0}")
     public static Collection<Object[]> strategies() {
         return Arrays.asList(new Object[][]{
-//                { new SinglyLinkedListSymbolTable() },
+                { new SinglyLinkedListSymbolTable() },
                 { new OrderedArraySymbolTable() }
         });
     }
@@ -80,10 +80,10 @@ public class SymbolTableTest {
         assertTrue(strategy.isEmpty());
     }
 
-//    @Test
-//    public void empty_case() {
-//        assertTrue(strategy.isEmpty());
-//        assertEquals(strategy.size(), 0);
-//    }
+    @Test
+    public void empty_case() {
+        assertTrue(strategy.isEmpty());
+        assertEquals(strategy.size(), 0);
+    }
 
 }

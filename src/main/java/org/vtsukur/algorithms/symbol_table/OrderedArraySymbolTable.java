@@ -94,7 +94,7 @@ public final class OrderedArraySymbolTable<K extends Comparable<K>, V> extends B
         int hi = size - 1;
 
         while (lo <= hi) {
-            int m = lo + (hi + lo) / 2;
+            int m = lo + (hi - lo) / 2;
 
             final int comparison = key.compareTo(keys[m]);
             if (comparison < 0) {
